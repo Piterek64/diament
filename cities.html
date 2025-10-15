@@ -149,14 +149,96 @@
             </div>
         </section>
 
+        <section class="home-section" id="franchise">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Franczyza</span>
+                    <h2 class="section-title">Zostań franczyzobiorcą Diament Delivery</h2>
+                    <p>Rozwijaj własne miasto z naszym know-how, wsparciem technologicznym i flotą.</p>
+                </div>
+                <div class="split-grid">
+                    <div class="card franchise-card">
+                        <h3>Co zapewniamy?</h3>
+                        <ul>
+                            <li>Panel zamówień i aplikacje dla kurierów</li>
+                            <li>Szkolenia onboardingowe i manuale operacyjne</li>
+                            <li>Wsparcie marketingowe i centralne kampanie</li>
+                        </ul>
+                    </div>
+                    <div class="card franchise-card">
+                        <h3>Co jest po Twojej stronie?</h3>
+                        <ul>
+                            <li>Rekrutacja lokalnych kurierów</li>
+                            <li>Relacje z restauracjami i partnerami</li>
+                            <li>Codzienny nadzór nad operacjami</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="plan-note">Model franczyzowy startuje od 35 000 zł inwestycji początkowej. Otrzymujesz dedykowanego opiekuna ekspansji.</p>
+            </div>
+        </section>
+
+        <section class="home-section alt" id="franchise-form">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Formularz</span>
+                    <h2 class="section-title">Zgłoś swoje miasto do franczyzy</h2>
+                    <p>Podaj podstawowe informacje – skontaktujemy się, aby omówić potencjał Twojej lokalizacji.</p>
+                </div>
+                <div class="form-card">
+                    <form id="franchise-interest-form" class="form-grid">
+                        <div class="form-group">
+                            <label for="franchise_name">Imię i nazwisko *</label>
+                            <input type="text" id="franchise_name" name="franchise_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="franchise_email">Email *</label>
+                            <input type="email" id="franchise_email" name="franchise_email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="franchise_phone">Telefon *</label>
+                            <input type="tel" id="franchise_phone" name="franchise_phone" pattern="[0-9]{9}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="franchise_city">Miasto, które chcesz otworzyć *</label>
+                            <input type="text" id="franchise_city" name="franchise_city" required placeholder="np. Toruń">
+                        </div>
+                        <div class="form-group">
+                            <label for="franchise_budget">Dostępny kapitał początkowy</label>
+                            <select id="franchise_budget" name="franchise_budget">
+                                <option value="">Wybierz przedział</option>
+                                <option value="35-50">35 000 – 50 000 zł</option>
+                                <option value="50-75">50 000 – 75 000 zł</option>
+                                <option value="75-100">75 000 – 100 000 zł</option>
+                                <option value="100+">powyżej 100 000 zł</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="franchise_message">Wiadomość</label>
+                            <textarea id="franchise_message" name="franchise_message" rows="4" placeholder="Opisz doświadczenie w gastronomii, logistyce lub zarządzaniu."></textarea>
+                        </div>
+                        <div class="form-group checkbox">
+                            <label>
+                                <input type="checkbox" name="franchise_privacy" required>
+                                <span>Akceptuję politykę prywatności *</span>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section class="home-section" id="cta">
             <div class="container">
                 <div class="cta-panel">
                     <h2>Chcesz nas w swoim mieście?</h2>
                     <p>Zgłoś zainteresowanie współpracą – analizujemy zapotrzebowanie i tworzymy dedykowane zespoły.</p>
                     <div class="cta-actions">
-                        <a href="contact.html" class="btn btn-primary">Porozmawiaj z nami</a>
-                        <a href="contact.html#franchise" class="btn btn-secondary">Zostań franczyzobiorcą</a>
+                        <a href="#franchise-form" class="btn btn-primary">Wypełnij formularz</a>
+                        <a href="contact.html" class="btn btn-secondary">Porozmawiaj z nami</a>
                     </div>
                 </div>
             </div>

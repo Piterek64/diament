@@ -326,7 +326,7 @@ class DiamentDelivery {
                 let peakBonus = isPeak ? 1.3 : 1;
                 let totalEarnings = Math.round(hours * baseRate * peakBonus);
 
-                earningsDisplay.textContent = `${totalEarnings}zł`;
+                earningsDisplay.textContent = `${totalEarnings.toLocaleString('pl-PL')} zł`;
                 if (hoursValue) {
                     hoursValue.textContent = `${hours}h`;
                 }
