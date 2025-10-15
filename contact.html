@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0b0f1e">
+<title>Kontakt - DIAMENT DELIVERY</title>
+    <meta name="description" content="Skontaktuj się z nami! Zgłoś restaurację, zostań kurierem lub ambasadorem miasta. Tel: 123 456 789, Email: kontakt@diamentdelivery.pl">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-purple: #9451FA;
+            --light-violet: #8B5CF6;
+            --accent-violet: #A78BFA;
+            --dark-charcoal: #1F2937;
+            --success-green: #10B981;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #111735, #0b0f1e);
+            min-height: 100vh;
+        }
+        
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(107, 47, 184, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .form-section {
+            display: none;
+        }
+        
+        .form-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-content.open {
+            max-height: 200px;
+        }
+    </style>
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="dd-nav">
+  <div class="container inner">
+	<a href="index.html" class="brand">
+	  <!-- UWAGA: plik w katalogu głównym, nie w /resources -->
+	  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+	</a>
+    <div class="menu">
+      <a href="index.html#home">Strona główna</a>
+      <a href="restaurants.html">Dla restauracji</a>
+      <a href="couriers.html">Dla kurierów</a>
+      <a href="cities.html">Nasze miasta</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+  </div>
+</nav>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-purple-800 section hero">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+                    📞 <span class="block md:inline">Skontaktuj się</span> <span class="block md:inline">z nami</span>
+                </h1>
+                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+                    Masz pytania? Chcesz dołączyć do naszej sieci? A może interesuje Cię współpraca? Jesteśmy tutaj, aby pomóc!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact-form" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Wyślij wiadomość
+                    </a>
+                    <a href="tel:123456789" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
+                        Zadzwoń teraz
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quick Contact Cards -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Szybki kontakt</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Wybierz najlepszy sposób kontaktu dla Twojej sprawy.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="contact-card card-hover rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">📧</div>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-2">Email</h3>
+                    <p class="text-gray-300 mb-4">Najlepsze dla szczegółowych zapytań</p>
+                    <a href="mailto:kontakt@diamentdelivery.pl" class="text-purple-600 font-semibold hover:underline">
+                        kontakt@diamentdelivery.pl
+                    </a>
+                </div>
+                
+                <div class="contact-card card-hover rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">📞</div>
+                    <h3 class="font-display text-xl font-semibold text-gray-300 mb-2">Telefon</h3>
+                    <p class="text-gray-300 mb-4">Szybka pomoc i konsultacje</p>
+                    <a href="tel:123456789" class="text-blue-600 font-semibold hover:underline">
+                        123 456 789
+                    </a>
+                </div>
+                
+                <div class="contact-card card-hover rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">💬</div>
+                    <h3 class="font-display text-xl font-semibold text-gray-300 mb-2">Chat</h3>
+                    <p class="text-gray-300 mb-4">Codziennie 8:00-22:00</p>
+                    <button onclick="alert('Chat wkrótce dostępny!')" class="text-green-600 font-semibold hover:underline">
+                        Rozpocznij rozmowę
+                    </button>
+                </div>
+                
+                <div class="contact-card card-hover rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">📍</div>
+                    <h3 class="font-display text-xl font-semibold text-gray-300 mb-2">Biuro</h3>
+                    <p class="text-gray-300 mb-4">Spotkajmy się osobiście</p>
+                    <address class="text-orange-600 font-semibold not-italic">
+                        Kołobrzeg, Polska<br>
+                        ul. Portowa 15
+                    </address>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Form -->
+    <section id="contact-form" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Formularz kontaktowy</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <!-- Contact Type Selection -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-200 mb-4">W czym możemy pomóc?</label>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <button type="button" class="contact-type-btn p-4 border-2 border-gray-200 rounded-lg text-center hover:border-purple-500 hover:bg-purple-50 transition-colors" data-type="restaurant">
+                            <div class="text-3xl mb-2">🍽️</div>
+                            <div class="font-semibold">Restauracja</div>
+                            <div class="text-sm text-gray-300">Chcę dołączyć jako partner</div>
+                        </button>
+                        <button type="button" class="contact-type-btn p-4 border-2 border-gray-200 rounded-lg text-center hover:border-purple-500 hover:bg-purple-50 transition-colors" data-type="courier">
+                            <div class="text-3xl mb-2">🚴‍♂️</div>
+                            <div class="font-semibold">Kurier</div>
+                            <div class="text-sm text-gray-300">Chcę zarabiać z nami</div>
+                        </button>
+                        <button type="button" class="contact-type-btn p-4 border-2 border-gray-200 rounded-lg text-center hover:border-purple-500 hover:bg-purple-50 transition-colors" data-type="ambassador">
+                            <div class="text-3xl mb-2">💎</div>
+                            <div class="font-semibold">Ambasador</div>
+                            <div class="text-sm text-gray-300">Interesuje mnie franczyza</div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Restaurant Form -->
+                <div class="form-section" id="restaurant-form">
+                    <h3 class="text-2xl font-semibold text-gray-300 mb-6">Formularz dla restauracji</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Nazwa restauracji *</label>
+                                <input type="text" name="restaurant_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Miasto *</label>
+                                <select name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz miasto</option>
+                                    <option value="kolobrzeg">Kołobrzeg</option>
+                                    <option value="zielona-gora">Zielona Góra</option>
+                                    <option value="szczecin">Szczecin (wkrótce)</option>
+                                    <option value="gdansk">Gdańsk (wkrótce)</option>
+                                    <option value="poznan">Poznań (wkrótce)</option>
+                                    <option value="krakow">Kraków (wkrótce)</option>
+                                    <option value="wroclaw">Wrocław (wkrótce)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Imię i nazwisko *</label>
+                                <input type="text" name="contact_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Telefon *</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Wiadomość</label>
+                            <textarea name="message" rows="4" placeholder="Opisz swoją restaurację, lokalizację, specjalizację lub zadaj pytania..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold w-full">
+                            Wyślij zgłoszenie
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Courier Form -->
+                <div class="form-section" id="courier-form">
+                    <h3 class="text-2xl font-semibold text-gray-300 mb-6">Formularz dla kurierów</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Imię i nazwisko *</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Wiek *</label>
+                                <select name="age" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz wiek</option>
+                                    <option value="18-25">18-25 lat</option>
+                                    <option value="26-35">26-35 lat</option>
+                                    <option value="36-45">36-45 lat</option>
+                                    <option value="45+">Powyżej 45 lat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Miasto *</label>
+                                <select name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz miasto</option>
+                                    <option value="kolobrzeg">Kołobrzeg</option>
+                                    <option value="zielona-gora">Zielona Góra</option>
+                                    <option value="szczecin">Szczecin (wkrótce)</option>
+                                    <option value="gdansk">Gdańsk (wkrótce)</option>
+                                    <option value="poznan">Poznań (wkrótce)</option>
+                                    <option value="krakow">Kraków (wkrótce)</option>
+                                    <option value="wroclaw">Wrocław (wkrótce)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Rodzaj pojazdu *</label>
+                                <select name="vehicle" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz pojazd</option>
+                                    <option value="bike">Rower</option>
+                                    <option value="scooter">Skuter</option>
+                                    <option value="car">Samochód</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Telefon *</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Email *</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Doświadczenie</label>
+                            <select name="experience" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="none">Brak doświadczenia</option>
+                                <option value="beginner">Początkujący (do 6 miesięcy)</option>
+                                <option value="intermediate">Średnio zaawansowany (6-24 miesiące)</option>
+                                <option value="advanced">Zaawansowany (powyżej 2 lat)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Wiadomość</label>
+                            <textarea name="message" rows="4" placeholder="Opisz swoje doświadczenie, preferencje godzinowe lub zadaj pytania..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold w-full">
+                            Wyślij zgłoszenie
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Ambassador Form -->
+                <div class="form-section" id="ambassador-form">
+                    <h3 class="text-2xl font-semibold text-gray-300 mb-6">Formularz dla ambasadorów</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Imię i nazwisko *</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Miasto do zarządzania *</label>
+                                <input type="text" name="target_city" required placeholder="Np. Warszawa, Łódź, Katowice..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Doświadczenie biznesowe *</label>
+                                <select name="business_experience" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz doświadczenie</option>
+                                    <option value="none">Brak doświadczenia</option>
+                                    <option value="small">Małe doświadczenie (1-3 lata)</option>
+                                    <option value="medium">Średnie doświadczenie (3-7 lat)</option>
+                                    <option value="large">Duże doświadczenie (7+ lat)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Zasoby finansowe *</label>
+                                <select name="investment_capacity" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Wybierz przedział</option>
+                                    <option value="50k-100k">50k - 100k zł</option>
+                                    <option value="100k-200k">100k - 200k zł</option>
+                                    <option value="200k+">Powyżej 200k zł</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Telefon *</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-200 mb-2">Email *</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Wiadomość</label>
+                            <textarea name="message" rows="4" placeholder="Opisz swoją wizję, doświadczenie zespołowe lub zadaj pytania..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold w-full">
+                            Wyślij zgłoszenie
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Default Message -->
+                <div id="default-message" class="text-center py-12">
+                    <div class="text-6xl mb-4">👋</div>
+                    <h3 class="text-2xl font-semibold text-gray-300 mb-4">Witamy!</h3>
+                    <p class="text-gray-300 mb-6">Wybierz powyżej, w czym możemy Ci pomóc, a przygotujemy odpowiedni formularz.</p>
+                    <p class="text-sm text-gray-500">Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Najczęściej zadawane pytania</h2>
+                <p class="text-xl text-gray-300">Znajdź odpowiedzi na popularne pytania.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-gray-50 rounded-lg">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ('faq-1')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold text-gray-300 text-lg">Jak szybko odpowiadacie na wiadomości?</h3>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="faq-1" class="faq-content px-6 pb-6">
+                        <p class="text-gray-300">Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin w dni robocze. W weekendy czas odpowiedzi może się wydłużyć do 48 godzin.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-lg">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ('faq-2')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold text-gray-300 text-lg">Czy mogę dołączyć do waszej sieci, jeśli mam małą restaurację?</h3>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="faq-2" class="faq-content px-6 pb-6">
+                        <p class="text-gray-300">Oczywiście! Nie ma znaczenia wielkość Twojej restauracji. Współpracujemy zarówno z małymi lokalami, jak i dużymi sieciami. Liczy się jakość jedzenia i chęć rozwoju.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-lg">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ('faq-3')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold text-gray-300  text-lg">Czy muszę mieć własny rower/skuter, aby zostać kurierem?</h3>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="faq-3" class="faq-content px-6 pb-6">
+                        <p class="text-gray-300">Tak, kurierzy korzystają z własnych pojazdów. Możesz pracować na rowerze, skuterze lub samochodzie - wybierz to, co najlepiej Ci odpowiada. Wymagamy tylko, aby pojazd był w dobrym stanie technicznym.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-lg">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ('faq-4')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold text-gray-300 text-lg">Ile kosztuje uruchomienie franczyzy w moim mieście?</h3>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="faq-4" class="faq-content px-6 pb-6">
+                        <p class="text-gray-300">Koszt franczyzy zależy od wielkości miasta i zakresu usług. Zazwyczaj waha się od 50k do 200k zł. Gwarantujemy zwrot inwestycji w ciągu 12-18 miesięcy. Skontaktuj się z nami, aby omówić szczegóły dla Twojego miasta.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-50 rounded-lg">
+                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" onclick="toggleFAQ('faq-5')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-semibold text-gray-300 text-lg">Czy oferujecie szkolenia dla nowych partnerów?</h3>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </button>
+                    <div id="faq-5" class="faq-content px-6 pb-6">
+                        <p class="text-gray-300">Tak, zapewniamy kompletne szkolenie dla wszystkich nowych partnerów. Restauracje uczą się obsługi aplikacji, kurierzy przechodzą szkolenie BHP i obsługi zamówień, a ambasadorzy otrzymują pełne przeszkolenie z zarządzania flotą.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Office Hours -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Godziny pracy biura</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Zawsze gotowi do pomocy w dogodnych dla Ciebie godzinach.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-3xl mb-4">📞</div>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-2">Telefon</h3>
+                    <div class="space-y-1 text-gray-300">
+                        <div>Poniedziałek - Piątek: 8:00 - 18:00</div>
+                        <div>Sobota: 9:00 - 15:00</div>
+                        <div>Niedziela: nieczynne</div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-3xl mb-4">💬</div>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-2">Chat online</h3>
+                    <div class="space-y-1 text-gray-300">
+                        <div>Poniedziałek - Niedziela: 8:00 - 22:00</div>
+                        <div class="text-sm text-green-600">Całodobowa pomoc techniczna</div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-3xl mb-4">📧</div>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-2">Email</h3>
+                    <div class="space-y-1 text-gray-300">
+                        <div>Całodobowo</div>
+                        <div class="text-sm text-green-600">Odpowiedź w 24h</div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-3xl mb-4">🏢</div>
+                    <h3 class="font-display text-xl font-semibold text-gray-300 mb-2">Biuro stacjonarne</h3>
+                    <div class="space-y-1 text-gray-300">
+                        <div>Poniedziałek - Piątek: 9:00 - 17:00</div>
+                        <div>Spotkania po wcześniejszym umówieniu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="font-display text-2xl font-bold mb-4">
+                    <span class="gradient-text">DIAMENT</span> DELIVERY
+                </div>
+                <p class="text-gray-400 mb-6">© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
+                <div class="flex justify-center space-x-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Polityka prywatności</a>
+                    <a href="#" class="hover:text-white transition-colors">Regulamin współpracy</a>
+                    <a href="#" class="hover:text-white transition-colors">Partnerzy</a>
+                </div>
+                <div class="mt-6 text-gray-400">
+                    <p> kontakt@diamentdelivery.pl |  123 456 789 |  Kołobrzeg, Polska</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Contact form type switching
+        const contactTypeButtons = document.querySelectorAll('.contact-type-btn');
+        const formSections = document.querySelectorAll('.form-section');
+        const defaultMessage = document.getElementById('default-message');
+        
+        contactTypeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const type = button.dataset.type;
+                
+                // Update button states
+                contactTypeButtons.forEach(btn => {
+                    btn.classList.remove('border-purple-500', 'bg-purple-50');
+                    btn.classList.add('border-gray-200');
+                });
+                button.classList.remove('border-gray-200');
+                button.classList.add('border-purple-500', 'bg-purple-50');
+                
+                // Show appropriate form
+                formSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                defaultMessage.style.display = 'none';
+                document.getElementById(`${type}-form`).classList.add('active');
+            });
+        });
+        
+        // FAQ toggle function
+        function toggleFAQ(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            const icon = button.querySelector('svg');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-content').forEach(faq => {
+                    faq.classList.remove('open');
+                });
+                document.querySelectorAll('.faq-toggle svg').forEach(svg => {
+                    svg.style.transform = 'rotate(0deg)';
+                });
+                
+                // Open clicked FAQ
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+    
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#0b0f1e">
+<title>Dla kurierów - DIAMENT DELIVERY</title>
+    <meta name="description" content="Zostań kurierem Diament Delivery i zarabiaj 25-35zł/godz. Elastyczne godziny, multi-zlecenia, wypłaty na czas.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        :root {
+            --primary-purple: #9451FA;
+            --light-violet: #8B5CF6;
+            --accent-violet: #A78BFA;
+            --dark-charcoal: #1F2937;
+            --success-green: #10B981;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #111735, #0b0f1e);
+            min-height: 100vh;
+        }
+        
+        .font-display {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(107, 47, 184, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .earnings-display {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--success-green), #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .slider-container {
+            position: relative;
+        }
+        
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="dd-nav">
+  <div class="container inner">
+	<a href="index.html" class="brand">
+	  <!-- UWAGA: plik w katalogu głównym, nie w /resources -->
+	  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+	</a>
+    <div class="menu">
+      <a href="index.html#home">Strona główna</a>
+      <a href="restaurants.html">Dla restauracji</a>
+      <a href="couriers.html">Dla kurierów</a>
+      <a href="cities.html">Nasze miasta</a>
+      <a href="contact.html">Kontakt</a>
+    </div>
+  </div>
+</nav>
+    
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-purple-800 section hero">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+                    🚴‍♂️ <span class="block md:inline">Zarabiaj więcej,</span> <span class="block md:inline">dostarczając mądrzej</span>
+                </h1>
+                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+                    W Diament Delivery możesz brać kilka zleceń jednocześnie i planować trasy tak, jak Ci wygodnie. Pracuj na rowerze, skuterze lub samochodzie – elastycznie i bez stresu.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#earnings-calculator" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Oblicz zarobki
+                    </a>
+                    <a href="#application" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
+                        Zostań kurierem
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Earnings Calculator -->
+    <section id="earnings-calculator" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Kalkulator zarobków</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Sprawdź, ile możesz zarobić pracując jako kurier Diament Delivery.</p>
+            </div>
+            
+            <div class="bg-[#ffffff] rounded-2xl p-8 shadow-even">
+                <div class="text-center mb-12">
+                    <div class="earnings-display" id="earnings-display">0zł</div>
+                    <p class="text-xl text-gray-300">Zarobki za dzień pracy</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-3">Ile godzin chcesz pracować dziennie?</label>
+                            <div class="slider-container">
+                                <input type="range" id="hours-slider" class="slider" min="2" max="12" value="8">
+                                <div class="flex justify-between text-sm text-gray-500 mt-2">
+                                    <span>2h</span>
+                                    <span id="hours-value">8h</span>
+                                    <span>12h</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-3">Rodzaj pojazdu</label>
+                            <select id="vehicle-select" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="bike">Rower (25zł/h)</option>
+                                <option value="scooter">Skuter (30zł/h)</option>
+                                <option value="car">Samochód (35zł/h)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-3">Godziny szczytu (30% bonus)</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="peak-lunch" class="mr-3 peak-checkbox">
+                                    <span>Obiady (11:00-14:00)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="peak-dinner" class="mr-3 peak-checkbox">
+                                    <span>Kolacje (17:00-20:00)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="peak-weekend" class="mr-3 peak-checkbox">
+                                    <span>Weekendy (cały dzień)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h4 class="font-semibold text-gray-200 mb-2">Dodatkowe bonusy</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>✅ Bonus za pierwsze zamówienie: +5zł</li>
+                                <li>✅ Bonus za kolejne zamówienia: +2zł</li>
+                                <li>✅ Premia miesięczna: do 500zł</li>
+                                <li>✅ Napiwki: 100% dla Ciebie</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <h4 class="font-semibold text-gray-200 mb-4">Szacowane zarobki miesięczne</h4>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold text-green-600" id="monthly-min">0zł</div>
+                                <div class="text-sm text-gray-300">Minimum</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-blue-600" id="monthly-avg">0zł</div>
+                                <div class="text-sm text-gray-300">Średnio</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-purple-600" id="monthly-max">0zł</div>
+                                <div class="text-sm text-gray-300">Maksimum</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Dlaczego warto do nas dołączyć?</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Korzyści, które mówią same za siebie.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Wysokie zarobki</h3>
+                    <p class="text-gray-300">25-35zł za godzinę plus bonusy i napiwki. Zarabiaj więcej niż gdziekolwiek indziej.</p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">⏰</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Elastyczne godziny</h3>
+                    <p class="text-gray-300">Pracuj kiedy chcesz. Rano, wieczorem, w weekendy - Ty decydujesz o swoim grafiku.</p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Multi-zlecenia</h3>
+                    <p class="text-gray-300">Jednocześnie realizuj kilka zamówień i zarabiaj więcej w krótszym czasie.</p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Nowoczesna aplikacja</h3>
+                    <p class="text-gray-300">Intuicyjna aplikacja z nawigacją, statystykami i szybką wypłatą zarobków.</p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">🚗</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Wybór pojazdu</h3>
+                    <p class="text-gray-300">Pracuj na rowerze, skuterze lub samochodzie - wybierz to, co Ci najbardziej odpowiada.</p>
+                </div>
+                
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-5xl mb-4">🤝</div>
+                    <h3 class="font-display text-xl font-semibold mb-3">Wsparcie 24/7</h3>
+                    <p class="text-gray-300">Zawsze możesz liczyć na pomoc naszego zespołu wsparcia. Działamy szybko i skutecznie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Success Stories -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Historie naszych kurierów</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Poznaj prawdziwe historie osób, które z nami pracują.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
+                        <div class="ml-4">
+                            <div class="font-semibold">Marek, 28 lat</div>
+                            <div class="text-gray-300 text-sm">Kołobrzeg • Rower</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Zarobki dzienne:</span>
+                            <span class="font-bold text-green-600">180-220zł</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Godziny pracy:</span>
+                            <span class="font-bold text-blue-600">6-8h dziennie</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Pracuje z nami:</span>
+                            <span class="font-bold text-purple-600">8 miesięcy</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic text-sm">"Lubię elastyczność - pracuję gdy chcę i zarabiam więcej niż w biurze!"</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
+                        <div class="ml-4">
+                            <div class="font-semibold">Anna, 24 lata</div>
+                            <div class="text-gray-300 text-sm">Zielona Góra • Skuter</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Zarobki dzienne:</span>
+                            <span class="font-bold text-green-600">200-280zł</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Godziny pracy:</span>
+                            <span class="font-bold text-blue-600">5-7h dziennie</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Pracuje z nami:</span>
+                            <span class="font-bold text-purple-600">5 miesięcy</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic text-sm">"Multi-zlecenia to świetna sprawa - w godzinę zdobywam tyle, co inni w trzy!"</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
+                        <div class="ml-4">
+                            <div class="font-semibold">Piotr, 32 lata</div>
+                            <div class="text-gray-300 text-sm">Kołobrzeg • Samochód</div>
+                        </div>
+                    </div>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Zarobki dzienne:</span>
+                            <span class="font-bold text-green-600">250-350zł</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Godziny pracy:</span>
+                            <span class="font-bold text-blue-600">7-9h dziennie</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-300">Pracuje z nami:</span>
+                            <span class="font-bold text-purple-600">12 miesięcy</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-200 italic text-sm">"To moja główna praca - stabilne zarobki i wypłaty zawsze na czas. Polecam!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Application Form -->
+    <section id="application" class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Dołącz do naszej floty</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Wypełnij formularz i zacznij zarabiać już w ciągu 48 godzin.</p>
+            </div>
+            
+            <div class="bg-white rounded-2xl shadow-xl p-8">
+                <form id="courier-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Imię *</label>
+                            <input type="text" name="first_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Nazwisko *</label>
+                            <input type="text" name="last_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Telefon *</label>
+                            <input type="tel" name="phone" required pattern="[0-9]{9}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Wiek *</label>
+                            <select name="age" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Wybierz wiek</option>
+                                <option value="18-25">18-25 lat</option>
+                                <option value="26-35">26-35 lat</option>
+                                <option value="36-45">36-45 lat</option>
+                                <option value="45+">Powyżej 45 lat</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-200 mb-2">Miasto *</label>
+                            <select name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Wybierz miasto</option>
+                                <option value="kolobrzeg">Kołobrzeg</option>
+                                <option value="zielona-gora">Zielona Góra</option>
+                                <option value="szczecin">Szczecin (wkrótce)</option>
+                                <option value="gdansk">Gdańsk (wkrótce)</option>
+                                <option value="poznan">Poznań (wkrótce)</option>
+                                <option value="krakow">Kraków (wkrótce)</option>
+                                <option value="wroclaw">Wrocław (wkrótce)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Rodzaj pojazdu *</label>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="vehicle" value="bike" required class="mr-3">
+                                <div>
+                                    <div class="font-semibold">🚴‍♂️ Rower</div>
+                                    <div class="text-sm text-gray-300">25zł/h + bonusy</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="vehicle" value="scooter" required class="mr-3">
+                                <div>
+                                    <div class="font-semibold">🛵 Skuter</div>
+                                    <div class="text-sm text-gray-300">30zł/h + bonusy</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                                <input type="radio" name="vehicle" value="car" required class="mr-3">
+                                <div>
+                                    <div class="font-semibold">🚗 Samochód</div>
+                                    <div class="text-sm text-gray-300">35zł/h + bonusy</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Doświadczenie jako kurier</label>
+                        <select name="experience" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <option value="none">Brak doświadczenia</option>
+                            <option value="beginner">Początkujący (do 6 miesięcy)</option>
+                            <option value="intermediate">Średnio zaawansowany (6-24 miesiące)</option>
+                            <option value="advanced">Zaawansowany (powyżej 2 lat)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Preferowane godziny pracy</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="work_hours[]" value="morning" class="mr-3">
+                                <span>Poranki (6:00-12:00)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="work_hours[]" value="afternoon" class="mr-3">
+                                <span>Popołudnia (12:00-18:00)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="work_hours[]" value="evening" class="mr-3">
+                                <span>Wieczory (18:00-24:00)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="work_hours[]" value="weekends" class="mr-3">
+                                <span>Weekendy</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Dodatkowe informacje</label>
+                        <textarea name="additional_info" rows="4" placeholder="Opisz swoje doświadczenie, preferencje lub zadaj pytania..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <label class="flex items-start">
+                            <input type="checkbox" name="terms" required class="mt-1 mr-3">
+                            <span class="text-sm text-gray-300">Akceptuję <a href="#" class="text-blue-600 hover:underline">regulamin współpracy</a> i <a href="#" class="text-blue-600 hover:underline">politykę prywatności</a> *</span>
+                        </label>
+                        <label class="flex items-start">
+                            <input type="checkbox" name="marketing" class="mt-1 mr-3">
+                            <span class="text-sm text-gray-300">Wyrażam zgodę na otrzymywanie informacji o nowych możliwościach zarobkowych</span>
+                        </label>
+                    </div>
+                    
+                    <div class="text-center pt-6">
+                        <button type="submit" class="btn-primary text-white px-12 py-4 rounded-full text-lg font-semibold">
+                            Wyślij zgłoszenie
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Requirements Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Wymagania</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Sprawdź, co jest potrzebne, aby zostać kurierem.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-display text-2xl font-semibold mb-6 text-gray-300 text-center">Wymagania podstawowe</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-green-500 text-2xl mr-4">✅</div>
+                            <div>
+                                <div class="font-semibold">Wiek minimum 18 lat</div>
+                                <div class="text-sm text-gray-300">Wymagany wiek pełnoletni</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-green-500 text-2xl mr-4">✅</div>
+                            <div>
+                                <div class="font-semibold">Dokument tożsamości</div>
+                                <div class="text-sm text-gray-300">Dowód osobisty lub paszport</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-green-500 text-2xl mr-4">✅</div>
+                            <div>
+                                <div class="font-semibold">Własny pojazd</div>
+                                <div class="text-sm text-gray-300">Rower, skuter lub samochód w dobrym stanie</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-green-500 text-2xl mr-4">✅</div>
+                            <div>
+                                <div class="font-semibold">Smartfon z internetem</div>
+                                <div class="text-sm text-gray-300">Wymagana aplikacja Diament Delivery</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-2xl font-semibold mb-6 text-gray-300 text-center">Dokumenty do przygotowania</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-blue-500 text-2xl mr-4">📄</div>
+                            <div>
+                                <div class="font-semibold">Umowa zlecenie</div>
+                                <div class="text-sm text-gray-300">Przygotujemy dla Ciebie</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-blue-500 text-2xl mr-4">📄</div>
+                            <div>
+                                <div class="font-semibold">Dowód osobisty</div>
+                                <div class="text-sm text-gray-300">Kopia do weryfikacji</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-blue-500 text-2xl mr-4">📄</div>
+                            <div>
+                                <div class="font-semibold">Dane bankowe</div>
+                                <div class="text-sm text-gray-300">Do wypłaty zarobków</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white shadow-even rounded-lg">
+                            <div class="text-blue-500 text-2xl mr-4">📄</div>
+                            <div>
+                                <div class="font-semibold">Zdjęcie profilowe</div>
+                                <div class="text-sm text-gray-300">Do aplikacji i identyfikacji</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="font-display text-2xl font-bold mb-4">
+                     <span class="gradient-text">DIAMENT</span> DELIVERY
+                </div>
+                <p class="text-gray-400 mb-6">© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
+                <div class="flex justify-center space-x-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Polityka prywatności</a>
+                    <a href="#" class="hover:text-white transition-colors">Regulamin współpracy</a>
+                    <a href="#" class="hover:text-white transition-colors">Partnerzy</a>
+                </div>
+                <div class="mt-6 text-gray-400">
+                    <p> kontakt@diamentdelivery.pl |  123 456 789 |  Kołobrzeg, Polska</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Earnings Calculator
+        function updateEarnings() {
+            const hours = parseInt(document.getElementById('hours-slider').value);
+            const vehicle = document.getElementById('vehicle-select').value;
+            const peakCheckboxes = document.querySelectorAll('.peak-checkbox:checked');
+            
+            let baseRate = {
+                'bike': 25,
+                'scooter': 30,
+                'car': 35
+            }[vehicle];
+            
+            let peakBonus = 1 + (peakCheckboxes.length * 0.1); // 10% bonus per peak period
+            
+            let dailyEarnings = Math.round(hours * baseRate * peakBonus);
+            let monthlyMin = Math.round(dailyEarnings * 15); // 15 days minimum
+            let monthlyAvg = Math.round(dailyEarnings * 22); // 22 days average
+            let monthlyMax = Math.round(dailyEarnings * 26); // 26 days maximum
+            
+            document.getElementById('earnings-display').textContent = dailyEarnings + 'zł';
+            document.getElementById('monthly-min').textContent = monthlyMin + 'zł';
+            document.getElementById('monthly-avg').textContent = monthlyAvg + 'zł';
+            document.getElementById('monthly-max').textContent = monthlyMax + 'zł';
+            document.getElementById('hours-value').textContent = hours + 'h';
+        }
+        
+        // Event listeners for calculator
+        document.getElementById('hours-slider').addEventListener('input', updateEarnings);
+        document.getElementById('vehicle-select').addEventListener('change', updateEarnings);
+        document.querySelectorAll('.peak-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', updateEarnings);
+        });
+        
+        // Initialize calculator
+        updateEarnings();
+    </script>
+    
+    <script src="main.js"></script>
+</body>
+</html>
