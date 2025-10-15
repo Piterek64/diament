@@ -70,7 +70,7 @@ a:hover{ opacity:.9; }
   height:var(--nav-h);
   display:flex; align-items:center;
 }
-.dd-nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.dd-nav .inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; width:100%; max-width:1200px; margin:0 auto; padding:0 20px; }
 .dd-nav .brand{ display:flex; align-items:center; gap:12px; font-weight:700; font-size:20px; }.dd-nav .brand span { display: none !important; }
 /* Logo w pasku nawigacji */
 #site-logo {
@@ -92,6 +92,16 @@ a:hover{ opacity:.9; }
   padding:10px 12px; border-radius:10px; color:#E8EDFA; font-weight:500;
 }
 .dd-nav .menu a:hover{ background: rgba(148,81,250,.15); }
+
+.dd-nav .menu-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(10,14,27,.55);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .25s ease;
+}
 
 /* Mobile menu placeholder - page keeps working even if JS isn’t loaded */
 #mobile-menu{ display:none; }
@@ -718,7 +728,10 @@ textarea::placeholder {
   border:1px solid rgba(255,255,255,0.2);
   background: transparent; color:#fff;
   align-items:center; justify-content:center;
+  transition:background .2s ease, border-color .2s ease;
 }
+.nav-toggle:focus-visible{ outline:2px solid var(--brand); outline-offset:4px; }
+.nav-toggle:hover{ background:rgba(148,81,250,.12); border-color:rgba(255,255,255,.35); }
 .nav-toggle .bar{
   display:block; width:22px; height:2px; background:#fff; margin:4px auto;
   transition:.25s ease;
@@ -726,26 +739,57 @@ textarea::placeholder {
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px){
+  .nav-toggle{ display:inline-flex; }
+
+  .dd-nav{
+    padding:0;
+  }
+
+  .dd-nav .inner{
+    padding:0 16px;
+  }
+
   .dd-nav .menu{
     position: fixed;
     top: 0; right: 0; bottom: 0;   /* tylko prawa krawędź, nie ustawiaj left */
-    width: min(84vw, 360px);
+    width: min(84vw, 320px);
     transform: translateX(100%);
     visibility: hidden;
+    pointer-events:none;
     will-change: transform;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: calc(var(--nav-h) + 16px) 24px 32px;
+    background: rgba(12,18,36,.98);
+    box-shadow: -16px 0 32px rgba(2,8,23,.55);
+    border-left:1px solid rgba(148,81,250,.2);
+    overflow-y:auto;
+    transition: transform .3s ease;
   }
   .dd-nav.open .menu{
     transform: translateX(0);
     visibility: visible;
+    pointer-events:auto;
   }
+  .dd-nav .menu a{
+    display:block;
+    width:100%;
+    padding:12px 14px;
+    border-radius:12px;
+    background:transparent;
+  }
+  .dd-nav .menu a:active{ background:rgba(148,81,250,.18); }
 
   .dd-nav .menu-backdrop{
     position: fixed;
     inset: 0;                      /* pełny ekran, ale fixed -> nie wypycha */
-    opacity: 0; visibility: hidden;
+    background:rgba(7,10,20,.55);
+    transition:opacity .25s ease;
   }
   .dd-nav.open .menu-backdrop{
     opacity: 1; visibility: visible;
+    pointer-events:auto;
   }
 }
 
