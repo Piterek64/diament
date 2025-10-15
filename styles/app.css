@@ -686,3 +686,88 @@ textarea::placeholder {
   width: 100%; /* pełna szerokość, jeśli to pionowy odstęp */
   visibility: hidden; /* niewidoczny */
 }
+
+
+/* ===== NAVBAR ===== */
+/* NAVBAR – solid (bez prześwitów) */
+.dd-nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  /* było: backdrop-filter + rgba(…,.75) */
+  backdrop-filter: none;                  /* wyłącz blur – niepotrzebny */
+  background: #0b0f1e;                   /* SOLID, bez prześwitu */
+  border-bottom: 1px solid var(--border);
+  margin: 0;                              /* jawnie wyzerowane */
+}
+
+/* (opcjonalnie) jeżeli chcesz lekko „przydymiać” dopiero po scrollu */
+.dd-nav.is-scrolled {
+  background: #0b0f1e;                    /* możesz dać też rgba(11,15,30,.95) */
+}
+
+.dd-nav .inner{
+  max-width: 1200px; margin: 0 auto;
+  padding: 12px 16px;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+}
+.dd-nav .brand img{ height: 36px; width:auto; display:block; }
+
+/* desktop menu */
+.dd-nav .menu{
+  display:flex; align-items:center; gap:24px;
+}
+.dd-nav .menu a{
+  color:#fff; text-decoration:none; font-weight:600; font-size:15px;
+  padding:10px 0; position:relative;
+}
+.dd-nav .menu a:focus-visible{ outline:2px solid #9451FA; outline-offset:4px; }
+
+/* hamburger (hidden on desktop) */
+.nav-toggle{
+  display:none;
+  width:44px; height:44px; border-radius:12px;
+  border:1px solid rgba(255,255,255,0.2);
+  background: transparent; color:#fff;
+  align-items:center; justify-content:center;
+}
+.nav-toggle .bar{
+  display:block; width:22px; height:2px; background:#fff; margin:4px auto;
+  transition:.25s ease;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 1024px){
+  .nav-toggle{ display:inline-flex; }
+  .dd-nav .menu{
+    position: fixed; top:0; right:0;
+    height:100vh; width:min(84vw, 360px);
+    background: rgba(9,7,16,0.96);
+    padding: 88px 24px 24px;
+    display:flex; flex-direction:column; gap:8px;
+    transform: translateX(100%); visibility:hidden; transition: transform .3s ease, visibility .3s step-end;
+  }
+  .dd-nav.open .menu{
+    transform: translateX(0); visibility:visible; transition: transform .3s ease, visibility 0s;
+  }
+  .dd-nav .menu a{
+    font-size:17px; padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+
+  .dd-nav .menu-backdrop{
+    position: fixed; inset:0; background: rgba(0,0,0,.4);
+    opacity:0; visibility:hidden; transition:.3s;
+  }
+  .dd-nav.open .menu-backdrop{ opacity:1; visibility:visible; }
+
+  /* hamburger -> X */
+  .dd-nav.open .nav-toggle .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+  .dd-nav.open .nav-toggle .bar:nth-child(2){ opacity:0; }
+  .dd-nav.open .nav-toggle .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+}
+
+/* kiedy menu otwarte: blokuj scroll pod spodem */
+body.menu-open{ overflow:hidden; }
