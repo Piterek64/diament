@@ -500,11 +500,13 @@ window.DiamentDelivery = DiamentDelivery;
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    toggle.classList.add('is-active');
   }
   function closeMenu(){
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    toggle.classList.remove('is-active');
   }
   function toggleMenu(){
     nav.classList.contains('open') ? closeMenu() : openMenu();

@@ -87,7 +87,7 @@ a:hover{ opacity:.9; }
 }
 
 
-.dd-nav .menu{ display:flex; align-items:center; gap:18px; }
+.dd-nav .menu{ display:flex; align-items:center; gap:18px; position:relative; z-index:20; }
 .dd-nav .menu a{
   padding:10px 12px; border-radius:10px; color:#E8EDFA; font-weight:500;
 }
@@ -117,6 +117,15 @@ a:hover{ opacity:.9; }
 }
 .hero .title{ font-size: clamp(2.4rem, 4vw, 4rem); font-weight:800; }
 .hero .btns{ display:flex; gap:16px; flex-wrap:wrap; margin-top:22px; }
+
+#typed-headline{
+  display:inline-block;
+  width:100%;
+  min-height:2.6em;
+  line-height:1.2;
+  text-align:center;
+  white-space:normal;
+}
 
 /* Cards */
 .card{
@@ -675,6 +684,33 @@ textarea::placeholder {
   .brand-marquee { --logo-w: 220px; --logo-h: 84px; --gap: 28px; --speed: 26s; padding: 2.5rem 0; }
 }
 
+@media (max-width: 768px){
+  .hero.hero-small{
+    padding-top: 5.5rem;
+    padding-bottom: 6rem;
+  }
+  .hero.hero-small .hero-logo,
+  .hero .hero-logo{
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  #typed-headline{
+    min-height:3.4em;
+  }
+}
+
+@media (max-width: 640px){
+  .brand-marquee{
+    margin-top: 1.75rem;
+  }
+  .section.hero h1{
+    line-height:1.28 !important;
+  }
+  .section.hero h1 > span + span{
+    margin-top: .35em;
+  }
+}
+
 
 
 .fake-margin {
@@ -736,6 +772,12 @@ textarea::placeholder {
   display:block; width:22px; height:2px; background:#fff; margin:4px auto;
   transition:.25s ease;
 }
+.nav-toggle .bar:nth-child(1),
+.nav-toggle .bar:nth-child(3){ transform-origin:center; }
+.nav-toggle.is-active{ background:rgba(148,81,250,.18); border-color:rgba(255,255,255,.45); }
+.nav-toggle.is-active .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+.nav-toggle.is-active .bar:nth-child(2){ opacity:0; }
+.nav-toggle.is-active .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px){
