@@ -9,27 +9,13 @@ class DiamentDelivery {
         this.initParticles();
         this.initCounters();
         this.initSliders();
-        this.initScrollEffects();
     }
 
     init() {
-        // Initialize typed.js for hero headline
-        if (document.getElementById('typed-headline')) {
-            new Typed('#typed-headline', {
-                strings: [
-                    'Szybsze dostawy.',
-                    'Niższe prowizje.',
-                    'Większe zyski.',
-                    'DIAMENT DELIVERY'
-                ],
-                typeSpeed: 80,
-                backSpeed: 50,
-                backDelay: 2000,
-                startDelay: 500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
+        // Ensure the hero headline always has the static copy on load
+        const headline = document.getElementById('hero-headline');
+        if (headline) {
+            headline.textContent = 'Szybsze, tańsze dostawy.';
         }
     }
 
@@ -157,15 +143,16 @@ class DiamentDelivery {
 
 
     initParticles() {
-        // P5.js particle system
-        if (typeof p5 !== 'undefined') {
+        // P5.js particle system (optional)
+        const container = document.getElementById('particles-canvas');
+        if (typeof p5 !== 'undefined' && container) {
             new p5((p) => {
                 let particles = [];
                 const numParticles = 50;
 
                 p.setup = () => {
                     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-                    canvas.parent('particles-canvas');
+                    canvas.parent(container);
                     
                     // Create particles
                     for (let i = 0; i < numParticles; i++) {
@@ -261,17 +248,6 @@ class DiamentDelivery {
                 }
             }).mount();
         }
-    }
-
-    initScrollEffects() {
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-bg');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
     }
 
     toggleStickyCTA() {
@@ -500,11 +476,13 @@ window.DiamentDelivery = DiamentDelivery;
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    toggle.classList.add('is-active');
   }
   function closeMenu(){
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    toggle.classList.remove('is-active');
   }
   function toggleMenu(){
     nav.classList.contains('open') ? closeMenu() : openMenu();
