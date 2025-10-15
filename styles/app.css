@@ -310,6 +310,16 @@ a:hover{ opacity:.9; }
   .hero.hero-subpage{ padding-bottom:72px; }
 }
 
+.section.hero h1{ line-height:1.24; }
+.section.hero h1 > span + span{ margin-top:.4em; }
+
+#hero-headline{
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  white-space:normal;
+}
+
 /* Cards */
 .card{
   background: linear-gradient(180deg, rgba(18,26,43,.96), rgba(18,26,43,.88));
