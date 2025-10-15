@@ -584,18 +584,27 @@ textarea::placeholder {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Pasek z przesuwającymi się logotypami marek ===== */
+
+/* ===== Pasek logotypów – pełna szerokość, większe logo, brak ucinania ===== */
 .brand-marquee {
-  --logo-h: 56px;         /* Wysokość "ramki" dla logo */
-  --logo-w: 220px;        /* Szerokość ramki (ok. przycisków) */
-  --gap: 32px;            /* Odstęp między logo */
-  --speed: 28s;           /* Czas jednego pełnego przejazdu */
+  --logo-h: 120px;          /* maksymalna wysokość logo */
+  --logo-w: 340px;          /* szerokość "okienka" */
+  --gap: 0px;              /* odstęp między logo */
+  --speed: 32s;             /* czas przejazdu */
+
   position: relative;
-  width: 100%;
-  height: calc(var(--logo-h) + 2rem);
+  width: 100vw;             /* pełna szerokość ekranu */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
   overflow: hidden;
-  margin-top: 3rem;
-  padding: 1rem 0;
+  padding: 7rem 0;          /* większe marginesy góra/dół */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .brand-row {
@@ -615,7 +624,7 @@ textarea::placeholder {
   animation: marquee-left-2 var(--speed) linear infinite;
 }
 
-/* Stały rozmiar dla każdego logo */
+/* Każde logo w osobnym "okienku" */
 .brand-item {
   flex: 0 0 var(--logo-w);
   width: var(--logo-w);
@@ -623,42 +632,24 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible; /* 🔥 nie ucina wysokich logotypów */
 }
 
 .brand-item img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%; /* 🔥 gwarantuje, że nic nie zostanie ucięte */
   object-fit: contain;
-  opacity: 0.9;
+  opacity: 0.95;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
 .brand-item img:hover {
   transform: scale(1.05);
   opacity: 1;
 }
 
-/* Efekt "fade" po bokach (premium) */
-.brand-marquee::before,
-.brand-marquee::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 120px;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-.brand-marquee::before {
-  left: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.35), transparent);
-}
-.brand-marquee::after {
-  right: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0.35), transparent);
-}
-
-/* Animacja – PRAWO → LEWO */
+/* Animacja: płynny ruch PRAWO ➡ LEWO */
 @keyframes marquee-left {
   0% { transform: translate3d(0, -50%, 0); }
   100% { transform: translate3d(-100%, -50%, 0); }
@@ -670,10 +661,28 @@ textarea::placeholder {
 
 /* Responsywność */
 @media (max-width: 1024px) {
-  .brand-marquee { --logo-w: 180px; --logo-h: 52px; --gap: 24px; --speed: 26s; }
+  .brand-marquee {
+    --logo-w: 300px;
+    --logo-h: 100px;
+    --gap: 48px;
+    --speed: 28s;
+    padding: 3rem 0;
+  }
 }
+
 @media (max-width: 640px) {
-  .brand-marquee { --logo-w: 140px; --logo-h: 46px; --gap: 20px; --speed: 24s; }
+  .brand-marquee {
+    --logo-w: 200px;
+    --logo-h: 80px;
+    --gap: 32px;
+    --speed: 26s;
+    padding: 2.5rem 0;
+  }
 }
 
 
+.fake-margin {
+  height: 80px; /* wysokość "marginesu" */
+  width: 100%; /* pełna szerokość, jeśli to pionowy odstęp */
+  visibility: hidden; /* niewidoczny */
+}
