@@ -94,14 +94,13 @@ a:hover{ opacity:.9; }
 .dd-nav .menu a:hover{ background: rgba(148,81,250,.15); }
 
 .dd-nav .menu-backdrop{
-  position:fixed;
+  position:absolute;
   inset:0;
   background:rgba(10,14,27,.55);
   opacity:0;
   visibility:hidden;
   pointer-events:none;
   transition:opacity .25s ease;
-  z-index:10;
 }
 
 /* Mobile menu placeholder - page keeps working even if JS isn’t loaded */
@@ -809,7 +808,6 @@ textarea::placeholder {
     border-left:1px solid rgba(148,81,250,.2);
     overflow-y:auto;
     transition: transform .3s ease;
-    z-index:40;
   }
   .dd-nav.open .menu{
     transform: translateX(0);
@@ -830,7 +828,6 @@ textarea::placeholder {
     inset: 0;                      /* pełny ekran, ale fixed -> nie wypycha */
     background:rgba(7,10,20,.55);
     transition:opacity .25s ease;
-    z-index:30;
   }
   .dd-nav.open .menu-backdrop{
     opacity: 1; visibility: visible;
