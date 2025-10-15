@@ -586,26 +586,24 @@ textarea::placeholder {
 
 
 /* ===== Pasek logotypów – pełna szerokość, większe logo, brak ucinania ===== */
+/* Pasek logotypów – bez 100vw, zero overflow na mobile */
 .brand-marquee {
-  --logo-h: 120px;          /* maksymalna wysokość logo */
-  --logo-w: 340px;          /* szerokość "okienka" */
-  --gap: 0px;              /* odstęp między logo */
-  --speed: 32s;             /* czas przejazdu */
+  --logo-h: 120px;   /* wysokość logo */
+  --logo-w: 340px;   /* szerokość okienka logo */
+  --gap: 48px;       /* odstęp między logo (0px wygląda zbyt ściśle) */
+  --speed: 32s;
 
   position: relative;
-  width: 100vw;             /* pełna szerokość ekranu */
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
+  width: 100%;         /* ← zamiast 100vw */
+  /* usuń lewy/prawy i ujemne marginesy */
   overflow: hidden;
-  padding: 7rem 0;          /* większe marginesy góra/dół */
+  padding: 7rem 0;     /* górny/dolny margines sekcji */
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 .brand-row {
   position: absolute;
@@ -635,14 +633,15 @@ textarea::placeholder {
   overflow: visible; /* 🔥 nie ucina wysokich logotypów */
 }
 
-.brand-item img {
+.brand-item img { 
+  display: block;      /* usuwa mikroszczeliny pod obrazkami */
   max-width: 90%;
-  max-height: 90%; /* 🔥 gwarantuje, że nic nie zostanie ucięte */
+  max-height: 90%;
   object-fit: contain;
-  opacity: 0.95;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: .95;
+  transition: transform .3s ease, opacity .3s ease;
 }
+
 
 .brand-item img:hover {
   transform: scale(1.05);
@@ -659,26 +658,13 @@ textarea::placeholder {
   100% { transform: translate3d(0, -50%, 0); }
 }
 
-/* Responsywność */
 @media (max-width: 1024px) {
-  .brand-marquee {
-    --logo-w: 300px;
-    --logo-h: 100px;
-    --gap: 48px;
-    --speed: 28s;
-    padding: 3rem 0;
-  }
+  .brand-marquee { --logo-w: 300px; --logo-h: 100px; --gap: 36px; --speed: 28s; padding: 3rem 0; }
+}
+@media (max-width: 640px) {
+  .brand-marquee { --logo-w: 220px; --logo-h: 84px; --gap: 28px; --speed: 26s; padding: 2.5rem 0; }
 }
 
-@media (max-width: 640px) {
-  .brand-marquee {
-    --logo-w: 200px;
-    --logo-h: 80px;
-    --gap: 32px;
-    --speed: 26s;
-    padding: 2.5rem 0;
-  }
-}
 
 
 .fake-margin {
@@ -740,34 +726,104 @@ textarea::placeholder {
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px){
-  .nav-toggle{ display:inline-flex; }
   .dd-nav .menu{
-    position: fixed; top:0; right:0;
-    height:100vh; width:min(84vw, 360px);
-    background: rgba(9,7,16,0.96);
-    padding: 88px 24px 24px;
-    display:flex; flex-direction:column; gap:8px;
-    transform: translateX(100%); visibility:hidden; transition: transform .3s ease, visibility .3s step-end;
+    position: fixed;
+    top: 0; right: 0; bottom: 0;   /* tylko prawa krawędź, nie ustawiaj left */
+    width: min(84vw, 360px);
+    transform: translateX(100%);
+    visibility: hidden;
+    will-change: transform;
   }
   .dd-nav.open .menu{
-    transform: translateX(0); visibility:visible; transition: transform .3s ease, visibility 0s;
-  }
-  .dd-nav .menu a{
-    font-size:17px; padding:14px 0;
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    transform: translateX(0);
+    visibility: visible;
   }
 
   .dd-nav .menu-backdrop{
-    position: fixed; inset:0; background: rgba(0,0,0,.4);
-    opacity:0; visibility:hidden; transition:.3s;
+    position: fixed;
+    inset: 0;                      /* pełny ekran, ale fixed -> nie wypycha */
+    opacity: 0; visibility: hidden;
   }
-  .dd-nav.open .menu-backdrop{ opacity:1; visibility:visible; }
-
-  /* hamburger -> X */
-  .dd-nav.open .nav-toggle .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-  .dd-nav.open .nav-toggle .bar:nth-child(2){ opacity:0; }
-  .dd-nav.open .nav-toggle .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+  .dd-nav.open .menu-backdrop{
+    opacity: 1; visibility: visible;
+  }
 }
+
 
 /* kiedy menu otwarte: blokuj scroll pod spodem */
 body.menu-open{ overflow:hidden; }
+
+/* Anti-overflow na mobile */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;     /* zamiast scrolla w poziomie */
+}
+
+/* bezpieczeństwo: wszystkie boxy liczone łącznie z border/padding */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* obrazki nigdy nie rozszerzają kontenera */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+
+html, body { margin: 0; padding: 0; width: 100%; max-width: 100%; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas { max-width: 100%; height: auto; }
+
+
+/* Globalny bezpiecznik: nic nie rozszerza strony w poziomie */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Particles/canvas: TYLKO tło, nie wpływa na wysokość dokumentu */
+#particles-canvas {
+  position: fixed;       /* kluczowe */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Off-canvas menu i backdrop na mobile — nie mogą brać udziału w flow */
+@media (max-width: 1024px){
+  .dd-nav .menu {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(84vw, 360px);
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+  .dd-nav.open .menu { transform: translateX(0); visibility: visible; }
+
+  .dd-nav .menu-backdrop {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .dd-nav.open .menu-backdrop { opacity: 1; visibility: visible; }
+}
+
+/* Pasek logotypów – zero hacków na 100vw */
+.brand-marquee {
+  width: 100%;
+  overflow: hidden;
+  /* jeśli miałeś: width:100vw + left/right 50% + ujemne marginesy – usuń */
+}
+/* index: hero nie musi mieć pełnego 100vh */
+#home.hero { min-height: 72vh !important; }
+.fake-margin { display: none !important; }
