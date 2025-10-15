@@ -741,7 +741,7 @@ h1,h2{ line-height:1.15; padding-bottom:.08em; }
 .cta-btn:hover{ transform: translateY(-1px); opacity:.95; }
 
 /* Hero logo slot */
-.hero-logo{ display:block; margin:0 auto 16px auto; width:min(460px, 60vw); height:auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,.35)); }
+.hero-logo{ display:block; margin:0 auto 16px auto; width:min(700px, 80vw); height:auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,.35)); }
 
 
 /* ============================
