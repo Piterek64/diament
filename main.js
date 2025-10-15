@@ -13,23 +13,10 @@ class DiamentDelivery {
     }
 
     init() {
-        // Initialize typed.js for hero headline
-        if (document.getElementById('typed-headline')) {
-            new Typed('#typed-headline', {
-                strings: [
-                    'Szybsze dostawy.',
-                    'Niższe prowizje.',
-                    'Większe zyski.',
-                    'DIAMENT DELIVERY'
-                ],
-                typeSpeed: 80,
-                backSpeed: 50,
-                backDelay: 2000,
-                startDelay: 500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
+        // Ensure the hero headline always has the static copy on load
+        const headline = document.getElementById('hero-headline');
+        if (headline) {
+            headline.textContent = 'Szybsze, tańsze dostawy.';
         }
     }
 
@@ -500,11 +487,13 @@ window.DiamentDelivery = DiamentDelivery;
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    toggle.classList.add('is-active');
   }
   function closeMenu(){
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    toggle.classList.remove('is-active');
   }
   function toggleMenu(){
     nav.classList.contains('open') ? closeMenu() : openMenu();
