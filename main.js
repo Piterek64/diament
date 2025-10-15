@@ -80,6 +80,12 @@ class DiamentDelivery {
         window.addEventListener('scroll', () => {
             this.toggleStickyCTA();
         });
+		window.addEventListener('scroll', () => {
+			const nav = document.querySelector('.dd-nav');
+			if (!nav) return;
+			if (window.scrollY > 8) nav.classList.add('is-scrolled');
+			else nav.classList.remove('is-scrolled');
+		});
     }
 
     switchRoleContent(buttonId) {
@@ -480,3 +486,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other files
 window.DiamentDelivery = DiamentDelivery;
+
+// --- mobile navbar helpers (BEZ <script> tagów) ---
+(function () {
+  const nav      = document.querySelector('.dd-nav');
+  const toggle   = document.getElementById('nav-toggle');
+  const backdrop = document.getElementById('menu-backdrop');
+  const links    = document.querySelectorAll('.dd-nav .menu a');
+
+  if (!nav || !toggle || !backdrop) return;
+
+  function openMenu(){
+    nav.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+  }
+  function closeMenu(){
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
+  function toggleMenu(){
+    nav.classList.contains('open') ? closeMenu() : openMenu();
+  }
+
+  toggle.addEventListener('click', toggleMenu);
+  backdrop.addEventListener('click', closeMenu);
+  links.forEach(a => a.addEventListener('click', closeMenu));
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+})();
+

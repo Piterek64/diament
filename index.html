@@ -140,20 +140,20 @@
     </style>
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="text-white">
-    <!-- Particles Background -->
-    <div id="particles-canvas"></div>
-    
-    <!-- Navigation -->
-    <nav class="dd-nav">
-  <div class="container inner">
-	<a href="index.html" class="brand">
-	  <!-- UWAGA: plik w katalogu głównym, nie w /resources -->
-	  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
-	</a>
+<!-- Navigation -->
+<nav class="dd-nav" role="navigation" aria-label="Główne">
+  <div class="inner">
+    <a href="index.html" class="brand">
+      <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+    </a>
 
+    <!-- Hamburger -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
 
-    <div class="menu">
+    <!-- Menu -->
+    <div class="menu" id="primary-menu">
       <a href="index.html#home">Strona główna</a>
       <a href="restaurants.html">Dla restauracji</a>
       <a href="couriers.html">Dla kurierów</a>
@@ -161,6 +161,9 @@
       <a href="contact.html">Kontakt</a>
     </div>
   </div>
+
+  <!-- Backdrop (mobile) -->
+  <div class="menu-backdrop" id="menu-backdrop"></div>
 </nav>
     
 	<!-- Hero Section -->
@@ -215,19 +218,19 @@
             </div>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="3500">0</div>
+                    <div class="counter" data-target="3500">10000</div>
                     <div class="text-gray-300 text-lg font-medium">Dostaw miesięcznie</div>
                     <div class="text-sm text-gray-500 mt-2">i ciągle rośniemy!</div>
                 </div>
                 
                 <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="30">0</div>
+                    <div class="counter" data-target="30">20</div>
                     <div class="text-gray-300 text-lg font-medium">Restauracji partnerskich</div>
                     <div class="text-sm text-gray-500 mt-2">zaufało nam już</div>
                 </div>
                 
                 <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="2">0</div>
+                    <div class="counter" data-target="2">2</div>
                     <div class="text-gray-300 text-lg font-medium">Miasta i rośniemy dalej</div>
                     <div class="text-sm text-gray-500 mt-2">planujemy ekspansję</div>
                 </div>

@@ -112,15 +112,20 @@
     </style>
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="text-white">
-    <!-- Navigation -->
-    <nav class="dd-nav">
-  <div class="container inner">
-	<a href="index.html" class="brand">
-	  <!-- UWAGA: plik w katalogu głównym, nie w /resources -->
-	  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
-	</a>
-    <div class="menu">
+<!-- Navigation -->
+<nav class="dd-nav" role="navigation" aria-label="Główne">
+  <div class="inner">
+    <a href="index.html" class="brand">
+      <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+    </a>
+
+    <!-- Hamburger -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="menu" id="primary-menu">
       <a href="index.html#home">Strona główna</a>
       <a href="restaurants.html">Dla restauracji</a>
       <a href="couriers.html">Dla kurierów</a>
@@ -128,6 +133,9 @@
       <a href="contact.html">Kontakt</a>
     </div>
   </div>
+
+  <!-- Backdrop (mobile) -->
+  <div class="menu-backdrop" id="menu-backdrop"></div>
 </nav>
     
     <!-- Hero Section -->
@@ -255,37 +263,37 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
                     <div class="text-5xl mb-4">💰</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Wysokie zarobki</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Wysokie zarobki</h3>
                     <p class="text-gray-300">25-35zł za godzinę plus bonusy i napiwki. Zarabiaj więcej niż gdziekolwiek indziej.</p>
                 </div>
                 
                 <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
                     <div class="text-5xl mb-4">⏰</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Elastyczne godziny</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Elastyczne godziny</h3>
                     <p class="text-gray-300">Pracuj kiedy chcesz. Rano, wieczorem, w weekendy - Ty decydujesz o swoim grafiku.</p>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-gray-300 text-center">
                     <div class="text-5xl mb-4">🚀</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Multi-zlecenia</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Multi-zlecenia</h3>
                     <p class="text-gray-300">Jednocześnie realizuj kilka zamówień i zarabiaj więcej w krótszym czasie.</p>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                <div class="card-hover bg-white rounded-2xl p-8 text-gray-300 shadow-lg text-center">
                     <div class="text-5xl mb-4">📱</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Nowoczesna aplikacja</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Nowoczesna aplikacja</h3>
                     <p class="text-gray-300">Intuicyjna aplikacja z nawigacją, statystykami i szybką wypłatą zarobków.</p>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                <div class="card-hover bg-white rounded-2xl text-gray-300 p-8 shadow-lg text-center">
                     <div class="text-5xl mb-4">🚗</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Wybór pojazdu</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Wybór pojazdu</h3>
                     <p class="text-gray-300">Pracuj na rowerze, skuterze lub samochodzie - wybierz to, co Ci najbardziej odpowiada.</p>
                 </div>
                 
-                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                <div class="card-hover bg-white rounded-2xl text-gray-300 p-8 shadow-lg text-center">
                     <div class="text-5xl mb-4">🤝</div>
-                    <h3 class="font-display text-xl font-semibold mb-3">Wsparcie 24/7</h3>
+                    <h3 class="font-display text-xl text-gray-300 font-semibold mb-3">Wsparcie 24/7</h3>
                     <p class="text-gray-300">Zawsze możesz liczyć na pomoc naszego zespołu wsparcia. Działamy szybko i skutecznie.</p>
                 </div>
             </div>

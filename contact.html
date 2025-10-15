@@ -109,15 +109,20 @@
     </style>
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<body class="text-white">
-    <!-- Navigation -->
-    <nav class="dd-nav">
-  <div class="container inner">
-	<a href="index.html" class="brand">
-	  <!-- UWAGA: plik w katalogu głównym, nie w /resources -->
-	  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
-	</a>
-    <div class="menu">
+<!-- Navigation -->
+<nav class="dd-nav" role="navigation" aria-label="Główne">
+  <div class="inner">
+    <a href="index.html" class="brand">
+      <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+    </a>
+
+    <!-- Hamburger -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="menu" id="primary-menu">
       <a href="index.html#home">Strona główna</a>
       <a href="restaurants.html">Dla restauracji</a>
       <a href="couriers.html">Dla kurierów</a>
@@ -125,6 +130,9 @@
       <a href="contact.html">Kontakt</a>
     </div>
   </div>
+
+  <!-- Backdrop (mobile) -->
+  <div class="menu-backdrop" id="menu-backdrop"></div>
 </nav>
     
     <!-- Hero Section -->
