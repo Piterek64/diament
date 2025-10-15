@@ -129,7 +129,7 @@
 
     <!-- Hamburger -->
     <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="hamburger" aria-hidden="true"></span>
     </button>
 
     <!-- Menu -->
@@ -148,22 +148,16 @@
 
     
     <!-- Hero Section -->
-    <section class="pt-16 pb-10 bg-gradient-to-r from-purple-600 to-purple-800 section hero">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6 leading-normal">
-                    🗺️ <span class="block md:inline">Jesteśmy już</span> <span class="block md:inline">w Twoim mieście</span>
-                </h1>
-                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+    <section class="section hero hero-subpage">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-title">🗺️ Jesteśmy już w Twoim mieście</h1>
+                <p class="hero-subtitle">
                     Sprawdź, gdzie aktualnie działamy i planujemy ekspansję. Dołącz do naszej sieci i bądź częścią rewolucji w dostawach.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#map-section" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Zobacz mapę
-                    </a>
-                    <a href="#upcoming-cities" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
-                        Plan ekspansji
-                    </a>
+                <div class="hero-actions">
+                    <a href="#map-section" class="btn btn-primary">Zobacz mapę</a>
+                    <a href="#upcoming-cities" class="btn btn-ghost">Plan ekspansji</a>
                 </div>
             </div>
         </div>

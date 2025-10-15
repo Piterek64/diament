@@ -118,7 +118,7 @@
 
     <!-- Hamburger -->
     <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      <span class="hamburger" aria-hidden="true"></span>
     </button>
 
     <!-- Menu -->
@@ -136,22 +136,16 @@
 </nav>
     
     <!-- Hero Section -->
-    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-purple-800 section hero">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
-                    📞 <span class="block md:inline">Skontaktuj się</span> <span class="block md:inline">z nami</span>
-                </h1>
-                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
+    <section class="section hero hero-subpage">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <h1 class="hero-title">📞 Skontaktuj się z nami</h1>
+                <p class="hero-subtitle">
                     Masz pytania? Chcesz dołączyć do naszej sieci? A może interesuje Cię współpraca? Jesteśmy tutaj, aby pomóc!
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#contact-form" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Wyślij wiadomość
-                    </a>
-                    <a href="tel:123456789" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
-                        Zadzwoń teraz
-                    </a>
+                <div class="hero-actions">
+                    <a href="#contact-form" class="btn btn-primary">Wyślij wiadomość</a>
+                    <a href="tel:123456789" class="btn btn-ghost">Zadzwoń teraz</a>
                 </div>
             </div>
         </div>

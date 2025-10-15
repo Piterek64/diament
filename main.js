@@ -9,7 +9,6 @@ class DiamentDelivery {
         this.initParticles();
         this.initCounters();
         this.initSliders();
-        this.initScrollEffects();
     }
 
     init() {
@@ -144,15 +143,16 @@ class DiamentDelivery {
 
 
     initParticles() {
-        // P5.js particle system
-        if (typeof p5 !== 'undefined') {
+        // P5.js particle system (optional)
+        const container = document.getElementById('particles-canvas');
+        if (typeof p5 !== 'undefined' && container) {
             new p5((p) => {
                 let particles = [];
                 const numParticles = 50;
 
                 p.setup = () => {
                     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-                    canvas.parent('particles-canvas');
+                    canvas.parent(container);
                     
                     // Create particles
                     for (let i = 0; i < numParticles; i++) {
@@ -248,17 +248,6 @@ class DiamentDelivery {
                 }
             }).mount();
         }
-    }
-
-    initScrollEffects() {
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-bg');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
     }
 
     toggleStickyCTA() {
