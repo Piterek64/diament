@@ -3,625 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#0b0f1e">
-<title>Dla restauracji - DIAMENT DELIVERY</title>
+    <meta name="theme-color" content="#0b0f1e">
+    <title>Dla restauracji - DIAMENT DELIVERY</title>
     <meta name="description" content="Dołącz do DIAMENT DELIVERY i obniż koszty dostaw o 40%. Więcej zamówień, mniejsze prowizje, pełna kontrola.">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Animation Libraries -->
+
+    <!-- Animation & Slider Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
-    
-    <style>
-        :root {
-            --primary-purple: #9451FA;
-            --light-violet: #8B5CF6;
-            --accent-violet: #A78BFA;
-            --dark-charcoal: #1F2937;
-            --success-green: #10B981;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #111735, #0b0f1e);
-            min-height: 100vh;
-        }
-        
-        .font-display {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(107, 47, 184, 0.3);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-step {
-            display: none;
-        }
-        
-        .form-step.active {
-            display: block;
-            animation: fadeInUp 0.5s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .progress-bar {
-            height: 4px;
-            background: #e5e7eb;
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
-            transition: width 0.3s ease;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="styles/app.css">
 </head>
-<!-- Navigation -->
-<nav class="dd-nav" role="navigation" aria-label="Główne">
-  <div class="inner">
-    <a href="index.html" class="brand">
-      <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
-    </a>
+<body>
+    <nav class="dd-nav" role="navigation" aria-label="Główne">
+        <div class="inner">
+            <a href="index.html" class="brand">
+                <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+            </a>
 
-    <!-- Hamburger -->
-    <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
 
-    <!-- Menu -->
-    <div class="menu" id="primary-menu">
-      <a href="index.html#home">Strona główna</a>
-      <a href="restaurants.html">Dla restauracji</a>
-      <a href="couriers.html">Dla kurierów</a>
-      <a href="cities.html">Nasze miasta</a>
-      <a href="contact.html">Kontakt</a>
-    </div>
-  </div>
-
-  <!-- Backdrop (mobile) -->
-  <div class="menu-backdrop" id="menu-backdrop"></div>
-</nav>
-    
-    <!-- Hero Section -->
-    <section class="pt-24 pb-16 bg-gradient-to-r from-purple-600 to-purple-800 section hero">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-6">
-                    🍽️ <span class="block md:inline">Więcej zamówień,</span> <span class="block md:inline">mniej kosztów</span>
-                </h1>
-                <p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-                    Zamiast płacić wysokie prowizje dużym platformom, współpracuj bezpośrednio z naszą flotą kurierów. Ty gotujesz – my dostarczamy.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#registration" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-                        Zgłoś swoją restaurację
-                    </a>
-                    <a href="#benefits" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
-                        Zobacz korzyści
-                    </a>
-                </div>
+            <div class="menu" id="primary-menu">
+                <a href="index.html#home">Strona główna</a>
+                <a href="restaurants.html">Dla restauracji</a>
+                <a href="couriers.html">Dla kurierów</a>
+                <a href="cities.html">Nasze miasta</a>
+                <a href="contact.html">Kontakt</a>
             </div>
         </div>
-    </section>
-    
-    <!-- Benefits Section -->
-	<!-- Benefits Section -->
-	<section class="why-section py-20 bg-white bg-opacity-95 no-reveal">
-	  <div class="max-w-6xl mx-auto px-6 text-center">
-		<h2 class="text-4xl font-extrabold mb-3 text-brand">Korzyści dla Twojej restauracji</h2>
-		<p class="text-gray-600 mb-12">Oszczędzaj koszty i zwiększaj liczbę zamówień — my dostarczymy.</p>
+        <div class="menu-backdrop" id="menu-backdrop"></div>
+    </nav>
 
-		<!-- BENEFITS: wewnątrz tego samego kontenera -->
-		<div class="benefits-grid">
-		  <!-- 1 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">💸</div>
-			<h3 class="benefit-title">Niższe prowizje</h3>
-			<p class="benefit-text">Płać nawet o 40% mniej niż u dużych platform. Więcej zysku zostaje u Ciebie.</p>
-		  </div>
-		  <!-- 2 -->
-		  <div class="benefit-card highlight">
-			<div class="benefit-icon">⚡</div>
-			<h3 class="benefit-title">Więcej zamówień jednocześnie</h3>
-			<p class="benefit-text">Kurierzy łączą zlecenia, skracając czas dostawy i podnosząc obrót.</p>
-		  </div>
-		  <!-- 3 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">📊</div>
-			<h3 class="benefit-title">Panel w czasie rzeczywistym</h3>
-			<p class="benefit-text">Podgląd statusów, tras i rozliczeń — wszystko w jednym miejscu.</p>
-		  </div>
-		  <!-- 4 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🔒</div>
-			<h3 class="benefit-title">Rozliczenia bez ryzyka</h3>
-			<p class="benefit-text">Gwarancja wypłat i szybkie przelewy. Koniec z opóźnieniami.</p>
-		  </div>
-		  <!-- 5 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🚀</div>
-			<h3 class="benefit-title">Start w 24 godziny</h3>
-			<p class="benefit-text">Podpis online, szybka konfiguracja, pełne wsparcie onboardingowe.</p>
-		  </div>
-		  <!-- 6 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🇵🇱</div>
-			<h3 class="benefit-title">Polskie wsparcie 24/7</h3>
-			<p class="benefit-text">Zespół z Polski — telefon, e-mail i chat, gdy tylko potrzebujesz.</p>
-		  </div>
-		</div>
+    <main>
+        <section class="section hero hero-subpage">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <span class="hero-eyebrow">Dla restauracji</span>
+                    <h1 class="hero-title">Więcej zamówień, mniej kosztów</h1>
+                    <p class="hero-subtitle">
+                        Zamiast płacić wysokie prowizje dużym platformom, współpracuj bezpośrednio z naszą flotą kurierów.
+                        Ty gotujesz – my dostarczamy, a klient dostaje najlepsze doświadczenie.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#registration" class="btn btn-primary">Zgłoś swoją restaurację</a>
+                        <a href="#korzysci" class="btn btn-ghost">Zobacz korzyści</a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric">
+                            <strong>−40%</strong>
+                            <span>średniej prowizji miesiąc po starcie</span>
+                        </div>
+                        <div class="metric">
+                            <strong>+45%</strong>
+                            <span>wzrost zamówień dzięki multi-zleceniom</span>
+                        </div>
+                        <div class="metric">
+                            <strong>24h</strong>
+                            <span>czas uruchomienia współpracy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<!-- Comparison Chart -->
-		<div class="bg-white rounded-2xl p-8 shadow-lg mt-16">
-		  <h3 class="font-display text-2xl font-bold text-center mb-8 gradient-text">Porównanie kosztów dostaw</h3>
-		  <div id="comparison-chart" style="height: 400px;"></div>
-		  <p class="text-center text-gray-300 mt-4">* Średnie prowizje na rynku polskim. Dane z grudnia 2024.</p>
-		</div>
-	  </div>
-	</section>
+        <section class="home-section" id="korzysci">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Korzyści</span>
+                    <h2 class="section-title">Co zyskują restauracje z Diament Delivery?</h2>
+                    <p>Prowadzisz kuchnię – my dbamy o logistykę, komunikację z kurierami i przejrzyste rozliczenia.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="icon">💸</div>
+                        <h3>Niższe prowizje</h3>
+                        <p>Płać nawet o 40% mniej niż u dużych platform. Więcej zysku zostaje u Ciebie.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">⚡</div>
+                        <h3>Multi-zlecenia</h3>
+                        <p>Kurierzy łączą zamówienia, skracając czas dostawy i zwiększając obrót.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">📊</div>
+                        <h3>Panel live</h3>
+                        <p>Statusy, trasy i rozliczenia – wszystko w jednym miejscu i aktualizowane na bieżąco.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🔒</div>
+                        <h3>Bezpieczne rozliczenia</h3>
+                        <p>Gwarancja wypłat i szybkie przelewy. Koniec z opóźnieniami.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🚀</div>
+                        <h3>Start w 24 godziny</h3>
+                        <p>Podpis online, szybka konfiguracja menu i pełne wsparcie onboardingowe.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🇵🇱</div>
+                        <h3>Wsparcie 24/7</h3>
+                        <p>Lokalne zespoły z Polski – telefon, e-mail i chat, gdy tylko potrzebujesz.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    
-    <!-- Success Stories -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Historie sukcesu</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Zobacz, jakie rezultaty osiągnęli nasi partnerzy.</p>
+        <section class="home-section alt" id="modele">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Modele współpracy</span>
+                    <h2 class="section-title">Rozliczenia dopasowane do Twojego lokalu</h2>
+                    <p>Wybierz model, który najlepiej odpowiada Twojej skali – zawsze z pełną przejrzystością kosztów.</p>
+                </div>
+                <div class="plan-grid">
+                    <article class="card plan-card">
+                        <h3>Prowizja 15%</h3>
+                        <p>Najlepsza dla lokali stawiających na elastyczność – płacisz tylko za zrealizowane dostawy.</p>
+                        <ul>
+                            <li>brak opłat stałych</li>
+                            <li>rozliczenie tygodniowe</li>
+                            <li>dostęp do pełnych raportów</li>
+                        </ul>
+                        <span class="tag">Popularne</span>
+                    </article>
+                    <article class="card plan-card">
+                        <h3>Abonament 299 zł</h3>
+                        <p>Stała opłata miesięczna bez prowizji – idealna dla restauracji z dużym wolumenem zamówień.</p>
+                        <ul>
+                            <li>nielimitowane dostawy</li>
+                            <li>priorytetowa obsługa kurierów</li>
+                            <li>dedykowany opiekun</li>
+                        </ul>
+                    </article>
+                    <article class="card plan-card">
+                        <h3>Model hybrydowy</h3>
+                        <p>Połącz abonament z prowizją i płac tylko za to, co realnie wykorzystasz w sezonie.</p>
+                        <ul>
+                            <li>niższa opłata stała</li>
+                            <li>bonusy za wysoki wolumen</li>
+                            <li>personalizowane SLA</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="plan-note">Średnia oszczędność naszych partnerów w porównaniu do tradycyjnych platform to 40% miesięcznie.*</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
-                        <div class="ml-4">
-                            <div class="font-semibold">Pierogarnia u Ani</div>
-                            <div class="text-gray-300 text-sm">Kołobrzeg</div>
-                        </div>
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Obniżka kosztów:</span>
-                            <span class="font-bold text-green-600">-38%</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Wzrost zamówień:</span>
-                            <span class="font-bold text-blue-600">+45%</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Czas dostawy:</span>
-                            <span class="font-bold text-purple-600">-25 min</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-200 italic text-sm">"Diament Delivery to prawdziwa rewolucja w naszej działalności delivery!"</p>
+        </section>
+
+        <section class="home-section" id="stories">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Historie sukcesu</span>
+                    <h2 class="section-title">Lokalne marki, które rosną z Diament Delivery</h2>
+                    <p>Zobacz, jak nasi partnerzy obniżyli koszty i skrócili czas dostaw.</p>
                 </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">B</div>
-                        <div class="ml-4">
-                            <div class="font-semibold">Burger House</div>
-                            <div class="text-gray-300 text-sm">Zielona Góra</div>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">A</span>
+                            <div>
+                                <strong>Pierogarnia u Ani</strong>
+                                <span>Kołobrzeg</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Obniżka kosztów:</span>
-                            <span class="font-bold text-green-600">-42%</span>
+                        <ul class="testimonial-stats">
+                            <li><span>Obniżka kosztów</span><strong>−38%</strong></li>
+                            <li><span>Wzrost zamówień</span><strong>+45%</strong></li>
+                            <li><span>Skrócenie dostawy</span><strong>−25 min</strong></li>
+                        </ul>
+                        <p>"Diament Delivery to prawdziwa rewolucja w naszej działalności. Wreszcie mamy kontrolę nad dostawami."</p>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">B</span>
+                            <div>
+                                <strong>Burger House</strong>
+                                <span>Zielona Góra</span>
+                            </div>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Wzrost zamówień:</span>
-                            <span class="font-bold text-blue-600">+52%</span>
+                        <ul class="testimonial-stats">
+                            <li><span>Obniżka kosztów</span><strong>−42%</strong></li>
+                            <li><span>Wzrost zamówień</span><strong>+52%</strong></li>
+                            <li><span>Skrócenie dostawy</span><strong>−18 min</strong></li>
+                        </ul>
+                        <p>"Nareszcie możemy skupić się na gotowaniu, a nie logistyce. Klienci chwalą szybkie dostawy."</p>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">P</span>
+                            <div>
+                                <strong>Pizza Presto</strong>
+                                <span>Kołobrzeg</span>
+                            </div>
                         </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Czas dostawy:</span>
-                            <span class="font-bold text-purple-600">-18 min</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-200 italic text-sm">"Nareszcie możemy skupić się na gotowaniu, a nie logistyce!"</p>
-                </div>
-                
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
-                        <div class="ml-4">
-                            <div class="font-semibold">Pizza Presto</div>
-                            <div class="text-gray-300 text-sm">Kołobrzeg</div>
-                        </div>
-                    </div>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Obniżka kosztów:</span>
-                            <span class="font-bold text-green-600">-35%</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Wzrost zamówień:</span>
-                            <span class="font-bold text-blue-600">+38%</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-300">Czas dostawy:</span>
-                            <span class="font-bold text-purple-600">-22 min</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-200 italic text-sm">"Multi-zlecenia to genialne rozwiązanie. Klienci są zachwyceni szybkością!"</p>
+                        <ul class="testimonial-stats">
+                            <li><span>Obniżka kosztów</span><strong>−35%</strong></li>
+                            <li><span>Wzrost zamówień</span><strong>+39%</strong></li>
+                            <li><span>Skrócenie dostawy</span><strong>−21 min</strong></li>
+                        </ul>
+                        <p>"Zespół Diament Delivery zna nasze miasto i reaguje natychmiast, gdy tylko potrzebujemy wsparcia."</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Registration Form -->
-    <section id="registration" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Zgłoś swoją restaurację</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin.</p>
+        </section>
+
+        <section class="home-section alt" id="process">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Jak zaczynamy</span>
+                    <h2 class="section-title">3 kroki do wdrożenia Diament Delivery w Twojej kuchni</h2>
+                    <p>Proces onboardingowy jest szybki i prowadzony przez dedykowanego opiekuna.</p>
+                </div>
+                <div class="steps-grid">
+                    <article class="step-card" data-step="01">
+                        <h3>Analiza i podpis online</h3>
+                        <p>Wypełniasz formularz, a my dobieramy najlepszy model współpracy i podpisujemy umowę zdalnie.</p>
+                    </article>
+                    <article class="step-card" data-step="02">
+                        <h3>Konfiguracja menu i szkolenie</h3>
+                        <p>Przenosimy Twoje menu do panelu, ustawiamy strefy dostaw i szkolimy zespół obsługi.</p>
+                    </article>
+                    <article class="step-card" data-step="03">
+                        <h3>Start z pełnym wsparciem</h3>
+                        <p>Kurierzy ruszają w teren, a Ty masz podgląd na żywo oraz opiekuna dostępnego 24/7.</p>
+                    </article>
+                </div>
             </div>
-            
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-                <!-- Progress Bar -->
-                <div class="mb-8">
-                    <div class="flex justify-between text-sm text-gray-300 mb-2">
-                        <span>Krok <span id="current-step">1</span> z 3</span>
-                        <span id="progress-text text-gray-300">Podstawowe informacje</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill" style="width: 33.33%;"></div>
-                    </div>
+        </section>
+
+        <section class="home-section" id="registration">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Zgłoszenie</span>
+                    <h2 class="section-title">Zgłoś swoją restaurację</h2>
+                    <p>Uzupełnij formularz – skontaktujemy się z Tobą w ciągu 24 godzin, aby rozpocząć współpracę.</p>
                 </div>
-                
-                <form id="restaurant-form" class="space-y-6">
-                    <!-- Step 1: Basic Information -->
-                    <div class="form-step active" id="step-1">
-                        <h3 class="text-2xl font-semibold text-gray-300 mb-6">Podstawowe informacje</h3>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Nazwa restauracji *</label>
-                                <input type="text" name="restaurant_name" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">NIP *</label>
-                                <input type="text" name="nip" required pattern="[0-9]{10}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Imię i nazwisko właściciela *</label>
-                                <input type="text" name="owner_name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Telefon kontaktowy *</label>
-                                <input type="tel" name="phone" required pattern="[0-9]{9}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            </div>
+                <div class="form-card">
+                    <form id="restaurant-form" class="form-grid">
+                        <div class="form-group">
+                            <label for="restaurant_name">Nazwa restauracji *</label>
+                            <input type="text" id="restaurant_name" name="restaurant_name" required>
                         </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium text-gray-200 mb-2">Email *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <div class="form-group">
+                            <label for="nip">NIP *</label>
+                            <input type="text" id="nip" name="nip" required pattern="[0-9]{10}">
                         </div>
-                    </div>
-                    
-                    <!-- Step 2: Address & Cuisine -->
-                    <div class="form-step" id="step-2">
-                        <h3 class="text-2xl font-semibold mb-6">Adres i specjalizacja</h3>
-                        
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Ulica i numer *</label>
-                                <input type="text" name="address" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            </div>
-                            
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-200 mb-2">Kod pocztowy *</label>
-                                    <input type="text" name="postal_code" required pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-200 mb-2">Miasto *</label>
-                                    <select name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                                        <option value="">Wybierz miasto</option>
-                                        <option value="kolobrzeg">Kołobrzeg</option>
-                                        <option value="zielona-gora">Zielona Góra</option>
-                                        <option value="szczecin">Szczecin (wkrótce)</option>
-                                        <option value="gdansk">Gdańsk (wkrótce)</option>
-                                        <option value="poznan">Poznań (wkrótce)</option>
-                                        <option value="krakow">Kraków (wkrótce)</option>
-                                        <option value="wroclaw">Wrocław (wkrótce)</option>
-                                    </select>
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-200 mb-2">Typ kuchni *</label>
-                                    <select name="cuisine_type" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                                        <option value="">Wybierz typ</option>
-                                        <option value="polish">Polska</option>
-                                        <option value="italian">Włoska</option>
-                                        <option value="asian">Azjatycka</option>
-                                        <option value="american">Amerykańska</option>
-                                        <option value="mexican">Meksykańska</option>
-                                        <option value="other">Inna</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Średnia liczba zamówień dziennie</label>
-                                <select name="daily_orders" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                                    <option value="">Wybierz przedział</option>
-                                    <option value="1-10">1-10 zamówień</option>
-                                    <option value="11-30">11-30 zamówień</option>
-                                    <option value="31-50">31-50 zamówień</option>
-                                    <option value="51-100">51-100 zamówień</option>
-                                    <option value="100+">Powyżej 100 zamówień</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="owner_name">Imię i nazwisko właściciela *</label>
+                            <input type="text" id="owner_name" name="owner_name" required>
                         </div>
-                    </div>
-                    
-                    <!-- Step 3: Preferences & Agreement -->
-                    <div class="form-step" id="step-3">
-                        <h3 class="text-2xl font-semibold mb-6">Preferencje i zgody</h3>
-                        
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Preferowany model rozliczeń</label>
-                                <div class="space-y-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="payment_model" value="commission" class="mr-3">
-                                        <span>Prowizja od zamówienia (15%)</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="payment_model" value="subscription" class="mr-3">
-                                        <span>Abonament miesięczny (299zł)</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="payment_model" value="hybrid" class="mr-3">
-                                        <span>Model hybrydowy (do ustalenia)</span>
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-200 mb-2">Dodatkowe informacje</label>
-                                <textarea name="additional_info" rows="4" placeholder="Opisz swoje oczekiwania, specjalne wymagania lub pytania..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
-                            </div>
-                            
-                            <div class="space-y-3">
-                                <label class="flex items-start">
-                                    <input type="checkbox" name="terms" required class="mt-1 mr-3">
-                                    <span class="text-sm text-gray-300">Akceptuję <a href="#" class="text-purple-600 hover:underline">regulamin współpracy</a> i <a href="#" class="text-purple-600 hover:underline">politykę prywatności</a> *</span>
-                                </label>
-                                <label class="flex items-start">
-                                    <input type="checkbox" name="marketing" class="mt-1 mr-3">
-                                    <span class="text-sm text-gray-300">Wyrażam zgodę na otrzymywanie informacji marketingowych o nowościach i promocjach</span>
-                                </label>
-                            </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon kontaktowy *</label>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{9}">
                         </div>
-                    </div>
-                    
-                    <!-- Navigation Buttons -->
-                    <div class="flex justify-between pt-8">
-                        <button type="button" id="prev-btn" class="px-6 py-3 border border-gray-300 rounded-lg text-gray-200 hover:bg-gray-50 transition-colors" style="display: none;">
-                            Wstecz
-                        </button>
-                        <div class="flex-1"></div>
-                        <button type="button" id="next-btn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
-                            Dalej
-                        </button>
-                        <button type="submit" id="submit-btn" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold" style="display: none;">
-                            Wyślij zgłoszenie
-                        </button>
-                    </div>
-                </form>
+                        <div class="form-group full">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="address">Adres restauracji *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal_code">Kod pocztowy *</label>
+                            <input type="text" id="postal_code" name="postal_code" required pattern="[0-9]{2}-[0-9]{3}" placeholder="00-000">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">Miasto *</label>
+                            <select id="city" name="city" required>
+                                <option value="">Wybierz miasto</option>
+                                <option value="kolobrzeg">Kołobrzeg</option>
+                                <option value="zielona-gora">Zielona Góra</option>
+                                <option value="szczecin">Szczecin (wkrótce)</option>
+                                <option value="gdansk">Gdańsk (wkrótce)</option>
+                                <option value="poznan">Poznań (wkrótce)</option>
+                                <option value="krakow">Kraków (wkrótce)</option>
+                                <option value="wroclaw">Wrocław (wkrótce)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cuisine_type">Typ kuchni *</label>
+                            <select id="cuisine_type" name="cuisine_type" required>
+                                <option value="">Wybierz typ</option>
+                                <option value="polish">Polska</option>
+                                <option value="italian">Włoska</option>
+                                <option value="asian">Azjatycka</option>
+                                <option value="american">Amerykańska</option>
+                                <option value="mexican">Meksykańska</option>
+                                <option value="other">Inna</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="daily_orders">Średnia liczba zamówień dziennie</label>
+                            <select id="daily_orders" name="daily_orders">
+                                <option value="">Wybierz przedział</option>
+                                <option value="1-10">1-10 zamówień</option>
+                                <option value="11-30">11-30 zamówień</option>
+                                <option value="31-50">31-50 zamówień</option>
+                                <option value="51-100">51-100 zamówień</option>
+                                <option value="100+">Powyżej 100 zamówień</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="additional_info">Dodatkowe informacje</label>
+                            <textarea id="additional_info" name="additional_info" rows="4" placeholder="Opisz oczekiwania, specjalne wymagania lub pytania..."></textarea>
+                        </div>
+                        <div class="form-group checkbox">
+                            <label>
+                                <input type="checkbox" name="terms" required>
+                                <span>Akceptuję regulamin współpracy i politykę prywatności *</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox">
+                            <label>
+                                <input type="checkbox" name="marketing">
+                                <span>Chcę otrzymywać informacje o nowościach i promocjach</span>
+                            </label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- FAQ Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Najczęściej zadawane pytania</h2>
-                <p class="text-xl text-gray-300">Znajdź odpowiedzi na swoje pytania.</p>
+        </section>
+
+        <section class="home-section alt" id="faq">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">FAQ</span>
+                    <h2 class="section-title">Najczęściej zadawane pytania</h2>
+                    <p>Masz dodatkowe pytania? Napisz do nas – odpowiemy w ciągu kilku godzin.</p>
+                </div>
+                <div class="faq-list">
+                    <details>
+                        <summary>Ile kosztuje współpraca z Diament Delivery?</summary>
+                        <p>Oferujemy dwa główne modele: prowizję 15% od zamówienia lub abonament miesięczny 299 zł bez prowizji. Możesz wybrać rozwiązanie dopasowane do Twojej skali.</p>
+                    </details>
+                    <details>
+                        <summary>Jak działa system multi-zleceń?</summary>
+                        <p>Inteligentny algorytm łączy zamówienia z pobliskich restauracji i przypisuje je jednemu kurierowi. Dzięki temu dostawy są szybsze, a koszty niższe.</p>
+                    </details>
+                    <details>
+                        <summary>Jak szybko mogę rozpocząć współpracę?</summary>
+                        <p>Proces rejestracji trwa maksymalnie 24 godziny. Po wypełnieniu formularza kontaktujemy się, podpisujemy umowę online i startujemy z dostawami.</p>
+                    </details>
+                    <details>
+                        <summary>Czy muszę mieć własnych kurierów?</summary>
+                        <p>Nie – to my zapewniamy flotę kurierów. Współpracujemy z lokalnymi zespołami, które znają Twoje miasto i dbają o wysoką jakość obsługi.</p>
+                    </details>
+                </div>
             </div>
-            
-            <div class="space-y-4">
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" data-target="faq-1">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-normal text-gray-300 text-lg">Ile kosztuje współpraca z Diament Delivery?</h3>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </button>
-                    <div id="faq-1" class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Oferujemy dwa modele rozliczeń: prowizję 15% od każdego zamówienia lub abonament miesięczny 299zł bez prowizji. Możesz wybrać model, który lepiej pasuje do Twojej działalności.</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" data-target="faq-2">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-normal text-gray-300 text-lg">Jak działa system multi-zleceń?</h3>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </button>
-                    <div id="faq-2" class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Nasz inteligentny system łączy zamówienia z pobliskich restauracji i przypisuje je jednemu kurierowi. Dzięki temu kurier może dostarczyć kilka zamówień w jednej trasie, co skraca czas dostawy i obniża koszty.</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" data-target="faq-3">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-normal text-gray-300 text-lg">Jak szybko mogę się podłączyć?</h3>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </button>
-                    <div id="faq-3" class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Proces rejestracji trwa maksymalnie 24 godziny. Wystarczy wypełnić formularz, a nasz zespół skontaktuje się z Tobą w celu weryfikacji i podpisania umowy.</p>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button class="faq-toggle w-full text-left p-6 focus:outline-none" data-target="faq-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-normal text-gray-300 text-lg">Czy muszę mieć własnych kurierów?</h3>
-                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-line-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </div>
-                    </button>
-                    <div id="faq-4" class="faq-content hidden px-6 pb-6">
-                        <p class="text-gray-300">Nie, to my zapewniamy całą flotę kurierów. Współpracujemy z lokalnymi kurierami, którzy są przeszkoleni i zapewniają wysoką jakość obsługi.</p>
+        </section>
+
+        <section class="home-section" id="kontakt">
+            <div class="container">
+                <div class="cta-panel">
+                    <h2>Gotowy na bardziej rentowne dostawy?</h2>
+                    <p>Porozmawiaj z nami o strategii logistycznej dla Twojej restauracji. Pokażemy Ci pełny panel i zaproponujemy dedykowane rozwiązania.</p>
+                    <div class="cta-actions">
+                        <a href="contact.html" class="btn btn-primary">Umów prezentację</a>
+                        <a href="contact.html#franchise" class="btn btn-secondary">Zapytaj o franczyzę</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
+        </section>
+    </main>
+
     <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="font-display text-2xl font-bold mb-4">
-                    <span class="gradient-text">DIAMENT</span> DELIVERY
-                </div>
-                <p class="text-gray-400 mb-6">© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
-                <div class="flex justify-center space-x-6 text-sm text-gray-400">
+        <div class="container">
+            <div class="text-center text-sm text-gray-400 space-y-4">
+                <p>© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
+                <div class="flex justify-center gap-6">
                     <a href="#" class="hover:text-white transition-colors">Polityka prywatności</a>
                     <a href="#" class="hover:text-white transition-colors">Regulamin współpracy</a>
                     <a href="#" class="hover:text-white transition-colors">Partnerzy</a>
                 </div>
-                <div class="mt-6 text-gray-400">
-                    <p> kontakt@diamentdelivery.pl | 123 456 789 | Kołobrzeg, Polska</p>
-                </div>
+                <p>kontakt@diamentdelivery.pl • 123 456 789 • Kołobrzeg, Polska</p>
             </div>
         </div>
     </footer>
-    
-    <script>
-        // Multi-step form functionality
-        let currentStep = 1;
-        const totalSteps = 3;
-        
-        const stepTitles = {
-            1: 'Podstawowe informacje',
-            2: 'Adres i specjalizacja',
-            3: 'Preferencje i zgody'
-        };
-        
-        function updateStep() {
-            // Hide all steps
-            document.querySelectorAll('.form-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            
-            // Show current step
-            document.getElementById(`step-${currentStep}`).classList.add('active');
-            
-            // Update progress
-            document.getElementById('current-step').textContent = currentStep;
-            document.getElementById('progress-text').textContent = stepTitles[currentStep];
-            document.getElementById('progress-fill').style.width = `${(currentStep / totalSteps) * 100}%`;
-            
-            // Update buttons
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const submitBtn = document.getElementById('submit-btn');
-            
-            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
-            nextBtn.style.display = currentStep < totalSteps ? 'block' : 'none';
-            submitBtn.style.display = currentStep === totalSteps ? 'block' : 'none';
-        }
-        
-        // Next button
-        document.getElementById('next-btn').addEventListener('click', () => {
-            if (currentStep < totalSteps) {
-                currentStep++;
-                updateStep();
-            }
-        });
-        
-        // Previous button
-        document.getElementById('prev-btn').addEventListener('click', () => {
-            if (currentStep > 1) {
-                currentStep--;
-                updateStep();
-            }
-        });
-        
-        // FAQ toggles
-        document.querySelectorAll('.faq-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const targetId = toggle.dataset.target;
-                const content = document.getElementById(targetId);
-                const icon = toggle.querySelector('svg');
-                
-                if (content.classList.contains('hidden')) {
-                    content.classList.remove('hidden');
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    content.classList.add('hidden');
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
-    </script>
-    
+
     <script src="main.js"></script>
 </body>
 </html>
