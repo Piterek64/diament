@@ -3,440 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="theme-color" content="#0b0f1e">
-<title>DIAMENT DELIVERY - Szybsze dostawy. Niższe prowizje. Większe zyski.</title>
-    <meta name="description" content="Diament Delivery to nowoczesna platforma łącząca restauracje z flotą kurierów — szybko, tanio i niezawodnie.">
-    
+    <meta name="theme-color" content="#0b0f1e">
+    <title>DIAMENT DELIVERY - Szybsze dostawy. Niższe prowizje. Większe zyski.</title>
+    <meta name="description" content="Diament Delivery to platforma łącząca restauracje z flotą kurierów – szybciej, taniej i z pełną kontrolą nad zleceniami.">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Animation Libraries -->
+
+    <!-- Animation & Slider Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
-    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-    
-    <style>
-        :root {
-            --primary-purple: #9451FA;
-            --light-violet: #8B5CF6;
-            --accent-violet: #A78BFA;
-            --dark-charcoal: #1F2937;
-            --success-green: #10B981;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #111735, #0b0f1e);
-            min-height: 100vh;
-        }
-        
-        .font-display {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-bg {
-            background-image: url('resources/hero-background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-purple), var(--light-violet));
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(107, 47, 184, 0.3);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .counter {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-purple);
-        }
-        
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .role-content {
-            display: none;
-        }
-        
-        .role-content.active {
-            display: block;
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .sticky-cta {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 1000;
-            transform: translateY(100px);
-            transition: transform 0.3s ease;
-        }
-        
-        .sticky-cta.visible {
-            transform: translateY(0);
-        }
-    </style>
+
     <link rel="stylesheet" href="styles/app.css">
 </head>
 <body>
-	<!-- Navigation -->
-	<nav class="dd-nav" role="navigation" aria-label="Główne">
-	  <div class="inner">
-		<a href="index.html" class="brand">
-		  <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
-		</a>
+    <!-- Navigation -->
+    <nav class="dd-nav" role="navigation" aria-label="Główne">
+        <div class="inner">
+            <a href="index.html" class="brand">
+                <img id="site-logo" src="logo-nav.png" alt="Diament Delivery">
+            </a>
 
-		<!-- Hamburger -->
-		<button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
-		  <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-		</button>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Otwórz menu" aria-controls="primary-menu" aria-expanded="false">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
 
-		<!-- Menu -->
-		<div class="menu" id="primary-menu">
-		  <a href="index.html#home">Strona główna</a>
-		  <a href="restaurants.html">Dla restauracji</a>
-		  <a href="couriers.html">Dla kurierów</a>
-		  <a href="cities.html">Nasze miasta</a>
-		  <a href="contact.html">Kontakt</a>
-		</div>
-	  </div>
-
-	  <!-- Backdrop (mobile) -->
-	  <div class="menu-backdrop" id="menu-backdrop"></div>
-	</nav>
-    
-	<!-- Hero Section -->
-	<section id="home" class="hero-bg min-h-screen flex items-center relative hero hero-small pb-32">
-		<div class="absolute inset-0 bg-black bg-opacity-40"></div>
-
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-			<div class="text-center">
-				<img src="logo.png" alt="Diament Delivery" class="hero-logo mx-auto mb-8">
-
-				<h1 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 leading-snug">
-					<span id="typed-headline"></span>
-				</h1>
-
-				<p class="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-					Diament Delivery to nowoczesna platforma, która łączy restauracje z flotą profesjonalnych kurierów w całej Polsce.
-					Zapewniamy szybkie, tanie i niezawodne dostawy — bez zbędnych pośredników, wysokich prowizji i skomplikowanych rozliczeń.
-				</p>
-
-				<!-- Role Selection Buttons -->
-				<div class="flex flex-col sm:flex-row gap-4 justify-center">
-					<a id="btn-restaurants" href="restaurants.html" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-						Dla restauracji
-					</a>
-					<a id="btn-couriers" href="couriers.html" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-						Dla kurierów
-					</a>
-					<a id="btn-ambassadors" href="contact.html" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-						Zostań ambasadorem
-					</a>
-				</div>
-				<div class="fake-margin"></div>
-
-			</div>
-		</div>
-
-		<!-- Scroll Indicator -->
-		<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce z-20">
-			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-					d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-			</svg>
-		</div>
-	</section>
-    
-    <!-- Statistics Section -->
-    <section class="py-20 bg-white bg-opacity-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Rośniemy z każdym dniem</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Dołącz do naszej sieci i korzystaj z dynamicznie rozwijającej się platformy dostaw.</p>
+            <div class="menu" id="primary-menu">
+                <a href="index.html#home">Strona główna</a>
+                <a href="restaurants.html">Dla restauracji</a>
+                <a href="couriers.html">Dla kurierów</a>
+                <a href="cities.html">Nasze miasta</a>
+                <a href="contact.html">Kontakt</a>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="3500">0</div>
-                    <div class="text-gray-300 text-lg font-medium">Dostaw miesięcznie</div>
-                    <div class="text-sm text-gray-500 mt-2">i ciągle rośniemy!</div>
-                </div>
-                
-                <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="30">0</div>
-                    <div class="text-gray-300 text-lg font-medium">Restauracji partnerskich</div>
-                    <div class="text-sm text-gray-500 mt-2">zaufało nam już</div>
-                </div>
-                
-                <div class="text-center card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="counter" data-target="2">0</div>
-                    <div class="text-gray-300 text-lg font-medium">Miasta i rośniemy dalej</div>
-                    <div class="text-sm text-gray-500 mt-2">planujemy ekspansję</div>
-                </div>
-            </div>
-			 <!-- Moving brand logos -->
-			<div class="brand-marquee">
-			  <div class="brand-row">
-				<div class="brand-item"><img src="marki/asiaorchid.png" alt="Asia Orchid"></div>
-				<div class="brand-item"><img src="marki/berlin.png" alt="Berlin Doner Kebap"></div>
-				<div class="brand-item"><img src="marki/subway.png" alt="Subway"></div>
-				<div class="brand-item"><img src="marki/dominos.png" alt="Domino's"></div>
-				<div class="brand-item"><img src="marki/pizza-hut.png" alt="Pizza Hut"></div>
-				<div class="brand-item"><img src="marki/burger-king.png" alt="Burger King"></div>
-			  </div>
-
-			  <!-- Klon do płynnej animacji -->
-			  <div class="brand-row brand-row--clone" aria-hidden="true">
-				<div class="brand-item"><img src="marki/asiaorchid.png" alt=""></div>
-				<div class="brand-item"><img src="marki/berlin.png" alt=""></div>
-				<div class="brand-item"><img src="marki/subway.png" alt=""></div>
-				<div class="brand-item"><img src="marki/dominos.png" alt=""></div>
-				<div class="brand-item"><img src="marki/pizza-hut.png" alt=""></div>
-				<div class="brand-item"><img src="marki/burger-king.png" alt=""></div>
-			  </div>
-			</div>
         </div>
-    </section>
-    
-    <!-- How It Works Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Jak to działa?</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Prosty proces, który działa dla wszystkich stron.</p>
-            </div>
-            
-			<div class="steps">
-			  <div class="step">
-				<div class="step-number">1</div>
-				<h3 class="step-title">Restauracja dodaje zamówienie</h3>
-				<p class="step-text">W naszej intuicyjnej aplikacji restauracja szybko dodaje nowe zamówienie do systemu.</p>
-			  </div>
-			  <div class="step">
-				<div class="step-number">2</div>
-				<h3 class="step-title">Kurier akceptuje zlecenie</h3>
-				<p class="step-text">Dostępny kurier przyjmuje zlecenie lub kilka zleceń jednocześnie.</p>
-			  </div>
-			  <div class="step">
-				<div class="step-number">3</div>
-				<h3 class="step-title">Klient otrzymuje jedzenie</h3>
-				<p class="step-text">Dzięki optymalizacji tras, jedzenie dociera szybciej niż kiedykolwiek wcześniej.</p>
-			  </div>
-			</div>
+        <div class="menu-backdrop" id="menu-backdrop"></div>
+    </nav>
 
-        </div>
-    </section>
-    
-    <!-- Benefits Section -->
-	<section class="why-section py-20 bg-white bg-opacity-95 no-reveal">
-	  <div class="max-w-6xl mx-auto px-6 text-center">
-		<h2 class="text-4xl font-extrabold mb-3 text-brand">Dlaczego warto?</h2>
-		<p class="text-gray-600 mb-12">Korzyści, które mówią same za siebie.</p>
-
-		<div class="benefits-grid">
-		  <!-- 1 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">💸</div>
-			<h3 class="benefit-title">Niższe koszty</h3>
-			<p class="benefit-text">Do 40% niższe prowizje niż w Glovo i Pyszne.pl</p>
-		  </div>
-		  <!-- 2 -->
-		  <div class="benefit-card highlight">
-			<div class="benefit-icon">⚡</div>
-			<h3 class="benefit-title">Multi-zlecenia</h3>
-			<p class="benefit-text">Większa efektywność dzięki jednoczesnym dostawom</p>
-		  </div>
-		  <!-- 3 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">📊</div>
-			<h3 class="benefit-title">Pełna kontrola</h3>
-			<p class="benefit-text">Kontrola nad zamówieniami i statystykami w czasie rzeczywistym</p>
-		  </div>
-		  <!-- 4 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🔒</div>
-			<h3 class="benefit-title">Bezpieczne rozliczenia</h3>
-			<p class="benefit-text">Szybkie i bezpieczne płatności w aplikacji</p>
-		  </div>
-		  <!-- 5 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🚀</div>
-			<h3 class="benefit-title">Szybki start</h3>
-			<p class="benefit-text">Rozpocznij współpracę w zaledwie 24 godziny</p>
-		  </div>
-		  <!-- 6 -->
-		  <div class="benefit-card">
-			<div class="benefit-icon">🇵🇱</div>
-			<h3 class="benefit-title">Polska sieć</h3>
-			<p class="benefit-text">Lokalni kurierzy i wsparcie w Twoim języku</p>
-		  </div>
-		</div>
-	  </div>
-	</section>
-
-    
-    <!-- Testimonials Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl md:text-5xl font-bold gradient-text mb-4">Co mówią o nas partnerzy?</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">Prawdziwe historie z współpracy z naszą platformą.</p>
-            </div>
-            
-            <div class="splide" id="testimonials-slider">
-                <div class="splide__track">
-                    <ul class="splide__list">
-                        <li class="splide__slide">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg mx-4">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
-                                    <div class="ml-4">
-                                        <div class="font-semibold">Anna Kowalska</div>
-                                        <div class="text-gray-300 text-sm">Właścicielka "Pierogarnia u Ani"</div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-200 italic">"Dzięki Diament Delivery obniżyliśmy koszty dostaw o 35% i jednocześnie zwiększyliśmy liczbę zamówień. System multi-zleceń to prawdziwa rewolucja!"</p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
+    <main>
+        <!-- Hero -->
+        <section id="home" class="section hero">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <img src="logo.png" alt="Diament Delivery" class="hero-logo">
+                    <span class="hero-eyebrow">Platforma dla restauracji i kurierów</span>
+                    <h1 class="hero-title"><span id="hero-headline">Szybsze, tańsze dostawy.</span></h1>
+                    <p class="hero-subtitle">
+                        W Diament Delivery łączymy lokale gastronomiczne z niezawodną flotą kurierów. Ograniczamy prowizje,
+                        przyspieszamy dostawy i oddajemy Ci pełną kontrolę nad każdym zamówieniem.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="restaurants.html" class="btn btn-primary">Zacznij jako restauracja</a>
+                        <a href="couriers.html" class="btn btn-secondary">Dołącz jako kurier</a>
+                        <a href="cities.html" class="btn btn-secondary">Dołącz jako franczyzobiorca</a>
+                    </div>
+                    <div class="hero-metrics">
+                        <div class="metric">
+                            <strong>40%</strong>
+                            <span>niższe prowizje niż u pośredników</span>
+                        </div>
+                        <div class="metric">
+                            <strong>12 min</strong>
+                            <span>średni czas dostawy w mieście</span>
+                        </div>
+                        <div class="metric">
+                            <strong>24/7</strong>
+                            <span>lokalne wsparcie i monitoring tras</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-widget">
+                        <div class="hero-widget__header">
+                            <span class="hero-widget__title">Panel zleceń</span>
+                            <span class="hero-widget__status">Aktywne</span>
+                        </div>
+                        <div class="hero-widget__list">
+                            <div class="hero-widget__item">
+                                <span>ul. Słoneczna 12 • 18:20</span>
+                                <span class="hero-widget__badge">w realizacji</span>
                             </div>
-                        </li>
-                        
-                        <li class="splide__slide">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg mx-4">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
-                                    <div class="ml-4">
-                                        <div class="font-semibold">Marek Nowak</div>
-                                        <div class="text-gray-300 text-sm">Kurier rowerowy</div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-200 italic">"Pracuję jako kurier od 2 lat i dopiero Diament Delivery pozwala mi naprawdę zarobić. Multi-zlecenia to genialne rozwiązanie!"</p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
+                            <div class="hero-widget__item">
+                                <span>ul. Kościuszki 4 • 18:32</span>
+                                <span class="hero-widget__badge">w drodze</span>
                             </div>
-                        </li>
-                        
-                        <li class="splide__slide">
-                            <div class="bg-white rounded-2xl p-8 shadow-lg mx-4">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">T</div>
-                                    <div class="ml-4">
-                                        <div class="font-semibold">Tomasz Wiśniewski</div>
-                                        <div class="text-gray-300 text-sm">Manager "Burger House"</div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-200 italic">"Platforma jest intuicyjna, a wsparcie techniczne działa świetnie. Nasze zamówienia są realizowane szybciej niż kiedykolwiek."</p>
-                                <div class="flex text-yellow-400 mt-4">
-                                    ★★★★★
-                                </div>
+                            <div class="hero-widget__item">
+                                <span>ul. Ogrodowa 27 • 18:40</span>
+                                <span class="hero-widget__badge">nowe</span>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                        <div class="hero-widget__footer">
+                            <span>Dostawy dzisiaj</span>
+                            <strong>126</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-purple-600 to-purple-800 section">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">Gotowy do współpracy?</h2>
-            <p class="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">Dołącz do naszej sieci i zacznij korzystać z nowoczesnej platformy dostaw już dziś.</p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="restaurants.html" class="bg-white text-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors">
-                    Zgłoś restaurację
-                </a>
-                <a href="couriers.html" class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:bg-opacity-20 transition-colors">
-                    Zostań kurierem
-                </a>
+        </section>
+
+        <!-- Metrics -->
+        <section class="home-section" id="statystyki">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Wyniki</span>
+                    <h2 class="section-title">Platforma, która rośnie razem z Tobą</h2>
+                    <p>Każdego dnia obsługujemy setki zamówień i wspieramy partnerów w całej Polsce.</p>
+                </div>
+                <div class="stat-grid">
+                    <article class="stat-card">
+                        <strong>3500+</strong>
+                        <span>Zrealizowanych dostaw miesięcznie</span>
+                        <p>Dzięki inteligentnemu łączeniu zleceń i tras.</p>
+                    </article>
+                    <article class="stat-card">
+                        <strong>40%</strong>
+                        <span>średniej oszczędności na prowizjach</span>
+                        <p>Płacisz za realne dostawy, nie za pośredników.</p>
+                    </article>
+                    <article class="stat-card">
+                        <strong>20+</strong>
+                        <span>aktywnych miast</span>
+                        <p>Stale powiększamy sieć partnerów i kurierów.</p>
+                    </article>
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
+        </section>
+
+        <!-- Benefits -->
+        <section class="home-section alt" id="korzysci">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Korzyści</span>
+                    <h2 class="section-title">Dlaczego restauracje i kurierzy wybierają Diament Delivery?</h2>
+                    <p>Łączymy niezawodną logistykę z przejrzystymi zasadami współpracy.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="icon">💸</div>
+                        <h3>Rozliczenia bez niespodzianek</h3>
+                        <p>Stała, przewidywalna stawka i pełny wgląd w koszty na żywo.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">⚡</div>
+                        <h3>Multi-zlecenia</h3>
+                        <p>Kurierzy łączą zamówienia w pakiety, a klienci dostają jedzenie szybciej.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">📍</div>
+                        <h3>Live-tracking</h3>
+                        <p>Monitorujesz drogę kuriera oraz czasy dostaw w jednym miejscu.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🤝</div>
+                        <h3>Wsparcie lokalnych zespołów</h3>
+                        <p>Dedykowani opiekunowie i kurierzy, którzy znają Twoje miasto.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🚀</div>
+                        <h3>Szybki start</h3>
+                        <p>Wystarczą 24 godziny, by rozpocząć współpracę i przyjmować zamówienia.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">🔒</div>
+                        <h3>Bezpieczne płatności</h3>
+                        <p>Automatyczne rozliczenia i raporty księgowe dostępne od ręki.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand marquee -->
+        <section class="home-section" aria-label="Zaufali nam">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Partnerzy</span>
+                    <h2 class="section-title">Sieć marek, które dostarczamy każdego dnia</h2>
+                    <p>Od lokalnych restauracji po ogólnopolskie sieci — obsługujemy partnerów każdej wielkości.</p>
+                </div>
+                <div class="brand-marquee">
+                    <div class="brand-row">
+                        <div class="brand-item"><img src="marki/asiaorchid.png" alt="Asia Orchid"></div>
+                        <div class="brand-item"><img src="marki/berlin.png" alt="Berlin Doner Kebap"></div>
+                        <div class="brand-item"><img src="marki/subway.png" alt="Subway"></div>
+                        <div class="brand-item"><img src="marki/dominos.png" alt="Domino's"></div>
+                        <div class="brand-item"><img src="marki/pizza-hut.png" alt="Pizza Hut"></div>
+                        <div class="brand-item"><img src="marki/burger-king.png" alt="Burger King"></div>
+                    </div>
+                    <div class="brand-row brand-row--clone" aria-hidden="true">
+                        <div class="brand-item"><img src="marki/asiaorchid.png" alt=""></div>
+                        <div class="brand-item"><img src="marki/berlin.png" alt=""></div>
+                        <div class="brand-item"><img src="marki/subway.png" alt=""></div>
+                        <div class="brand-item"><img src="marki/dominos.png" alt=""></div>
+                        <div class="brand-item"><img src="marki/pizza-hut.png" alt=""></div>
+                        <div class="brand-item"><img src="marki/burger-king.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steps -->
+        <section class="home-section alt" id="jak-to-dziala">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Proces</span>
+                    <h2 class="section-title">Jak działa Diament Delivery?</h2>
+                    <p>Trzy kroki, które łączą Twoją kuchnię z klientem końcowym.</p>
+                </div>
+                <div class="steps-grid">
+                    <article class="step-card" data-step="01">
+                        <h3>Dodajesz zamówienie w panelu</h3>
+                        <p>Wpisujesz adres, czas przygotowania i preferencje dostawy. System dobiera najlepszego kuriera.</p>
+                    </article>
+                    <article class="step-card" data-step="02">
+                        <h3>Kurier łączy trasę</h3>
+                        <p>Odbiera kilka zamówień jednocześnie i planuje trasę, by dostarczyć je w optymalnej kolejności.</p>
+                    </article>
+                    <article class="step-card" data-step="03">
+                        <h3>Klient śledzi dostawę w czasie rzeczywistym</h3>
+                        <p>Otrzymuje powiadomienia SMS i link do mapy. Ty widzisz status dostawy w swoim panelu.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="home-section" id="opinie">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Opinie</span>
+                    <h2 class="section-title">Co mówią o nas partnerzy?</h2>
+                    <p>Historie restauratorów i kurierów, którzy na co dzień korzystają z Diament Delivery.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">A</span>
+                            <div>
+                                <strong>Anna, Pierogarnia u Ani</strong>
+                                <span>Kołobrzeg</span>
+                            </div>
+                        </div>
+                        <ul class="testimonial-stats">
+                            <li><span>Obniżka kosztów</span><strong>−38%</strong></li>
+                            <li><span>Wzrost zamówień</span><strong>+45%</strong></li>
+                            <li><span>Skrócenie dostawy</span><strong>−25 min</strong></li>
+                        </ul>
+                        <p>„System multi-zleceń i dedykowane wsparcie pozwoliły nam przejąć kontrolę nad logistyką.”</p>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">M</span>
+                            <div>
+                                <strong>Marek, Burger House</strong>
+                                <span>Zielona Góra</span>
+                            </div>
+                        </div>
+                        <ul class="testimonial-stats">
+                            <li><span>Obniżka kosztów</span><strong>−42%</strong></li>
+                            <li><span>Wzrost zamówień</span><strong>+52%</strong></li>
+                            <li><span>Czas dostawy</span><strong>−18 min</strong></li>
+                        </ul>
+                        <p>„Kurierzy łączą zlecenia, a my widzimy każdy etap w panelu. Klienci chwalą szybkość.”</p>
+                    </article>
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <span class="avatar">T</span>
+                            <div>
+                                <strong>Tomek, kurier</strong>
+                                <span>Flota DD</span>
+                            </div>
+                        </div>
+                        <ul class="testimonial-stats">
+                            <li><span>Zarabia do</span><strong>35 zł/h</strong></li>
+                            <li><span>Bonusy w szczycie</span><strong>+30%</strong></li>
+                            <li><span>Średnie napiwki</span><strong>+28%</strong></li>
+                        </ul>
+                        <p>„Planowanie tras mam w jednym miejscu, a wypłaty trafiają na konto zawsze w terminie.”</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="home-section" id="kontakt">
+            <div class="container">
+                <div class="cta-panel">
+                    <h2>Gotowy, by dostarczać szybciej i taniej?</h2>
+                    <p>Porozmawiajmy o tym, jak Diament Delivery może wesprzeć Twoją restaurację lub karierę kuriera.</p>
+                    <div class="cta-actions">
+                        <a href="contact.html" class="btn btn-primary">Umów prezentację</a>
+                        <a href="restaurants.html" class="btn btn-ghost">Sprawdź szczegóły współpracy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <p class="text-gray-400 mb-6">© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
-                <div class="flex justify-center space-x-6 text-sm text-gray-400">
+        <div class="container">
+            <div class="text-center text-sm text-gray-400 space-y-4">
+                <p>© 2025 Diament Delivery – Wszystkie prawa zastrzeżone</p>
+                <div class="flex justify-center gap-6">
                     <a href="#" class="hover:text-white transition-colors">Polityka prywatności</a>
                     <a href="#" class="hover:text-white transition-colors">Regulamin współpracy</a>
                     <a href="#" class="hover:text-white transition-colors">Partnerzy</a>
                 </div>
-                <div class="mt-6 text-gray-400">
-                    <p>kontakt@diamentdelivery.pl 123 456 789  Kołobrzeg, Polska</p>
-                </div>
+                <p>kontakt@diamentdelivery.pl • 123 456 789 • Kołobrzeg, Polska</p>
             </div>
         </div>
     </footer>
-    
 
-    
     <script src="main.js"></script>
 </body>
 </html>

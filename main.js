@@ -9,27 +9,13 @@ class DiamentDelivery {
         this.initParticles();
         this.initCounters();
         this.initSliders();
-        this.initScrollEffects();
     }
 
     init() {
-        // Initialize typed.js for hero headline
-        if (document.getElementById('typed-headline')) {
-            new Typed('#typed-headline', {
-                strings: [
-                    'Szybsze dostawy.',
-                    'Niższe prowizje.',
-                    'Większe zyski.',
-                    'DIAMENT DELIVERY'
-                ],
-                typeSpeed: 80,
-                backSpeed: 50,
-                backDelay: 2000,
-                startDelay: 500,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
+        // Ensure the hero headline always has the static copy on load
+        const headline = document.getElementById('hero-headline');
+        if (headline) {
+            headline.textContent = 'Szybsze, tańsze dostawy.';
         }
     }
 
@@ -57,8 +43,13 @@ class DiamentDelivery {
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') {
+                    return;
+                }
+
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -157,15 +148,16 @@ class DiamentDelivery {
 
 
     initParticles() {
-        // P5.js particle system
-        if (typeof p5 !== 'undefined') {
+        // P5.js particle system (optional)
+        const container = document.getElementById('particles-canvas');
+        if (typeof p5 !== 'undefined' && container) {
             new p5((p) => {
                 let particles = [];
                 const numParticles = 50;
 
                 p.setup = () => {
                     const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
-                    canvas.parent('particles-canvas');
+                    canvas.parent(container);
                     
                     // Create particles
                     for (let i = 0; i < numParticles; i++) {
@@ -263,17 +255,6 @@ class DiamentDelivery {
         }
     }
 
-    initScrollEffects() {
-        // Parallax effect for hero background
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-bg');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-    }
-
     toggleStickyCTA() {
         const stickyCTA = document.querySelector('.sticky-cta');
         if (stickyCTA) {
@@ -333,6 +314,7 @@ class DiamentDelivery {
         const vehicleSelect = document.getElementById('vehicle-select');
         const peakHoursCheckbox = document.getElementById('peak-hours');
         const earningsDisplay = document.getElementById('earnings-display');
+        const hoursValue = document.getElementById('hours-value');
 
         if (hoursSlider && earningsDisplay) {
             const updateEarnings = () => {
@@ -344,7 +326,10 @@ class DiamentDelivery {
                 let peakBonus = isPeak ? 1.3 : 1;
                 let totalEarnings = Math.round(hours * baseRate * peakBonus);
 
-                earningsDisplay.textContent = `${totalEarnings}zł`;
+                earningsDisplay.textContent = `${totalEarnings.toLocaleString('pl-PL')} zł`;
+                if (hoursValue) {
+                    hoursValue.textContent = `${hours}h`;
+                }
             };
 
             hoursSlider.addEventListener('input', updateEarnings);
@@ -500,11 +485,13 @@ window.DiamentDelivery = DiamentDelivery;
     nav.classList.add('open');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
+    toggle.classList.add('is-active');
   }
   function closeMenu(){
     nav.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
+    toggle.classList.remove('is-active');
   }
   function toggleMenu(){
     nav.classList.contains('open') ? closeMenu() : openMenu();
