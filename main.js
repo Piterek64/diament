@@ -43,8 +43,13 @@ class DiamentDelivery {
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') {
+                    return;
+                }
+
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -309,6 +314,7 @@ class DiamentDelivery {
         const vehicleSelect = document.getElementById('vehicle-select');
         const peakHoursCheckbox = document.getElementById('peak-hours');
         const earningsDisplay = document.getElementById('earnings-display');
+        const hoursValue = document.getElementById('hours-value');
 
         if (hoursSlider && earningsDisplay) {
             const updateEarnings = () => {
@@ -321,6 +327,9 @@ class DiamentDelivery {
                 let totalEarnings = Math.round(hours * baseRate * peakBonus);
 
                 earningsDisplay.textContent = `${totalEarnings}zł`;
+                if (hoursValue) {
+                    hoursValue.textContent = `${hours}h`;
+                }
             };
 
             hoursSlider.addEventListener('input', updateEarnings);
