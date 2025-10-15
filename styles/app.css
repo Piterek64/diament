@@ -803,6 +803,12 @@ textarea::placeholder {
 .nav-toggle.is-active .hamburger::after{
   transform: translateY(-6px) rotate(-45deg);
 }
+.nav-toggle .bar:nth-child(1),
+.nav-toggle .bar:nth-child(3){ transform-origin:center; }
+.nav-toggle.is-active{ background:rgba(148,81,250,.18); border-color:rgba(255,255,255,.45); }
+.nav-toggle.is-active .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+.nav-toggle.is-active .bar:nth-child(2){ opacity:0; }
+.nav-toggle.is-active .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
 /* ===== MOBILE ===== */
 @media (max-width: 1024px){
